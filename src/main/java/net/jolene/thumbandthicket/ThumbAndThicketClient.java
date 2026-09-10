@@ -77,6 +77,8 @@ public class ThumbAndThicketClient implements ClientModInitializer {
                 ModItems.BROWN_BEAR_SPAWN_EGG);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> -1,
                 ModItems.BEAVER_SPAWN_EGG);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> -1,
+                ModItems.DEER_SPAWN_EGG);
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             if (world != null && pos != null) {

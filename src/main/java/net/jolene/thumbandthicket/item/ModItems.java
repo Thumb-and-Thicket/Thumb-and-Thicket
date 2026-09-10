@@ -56,6 +56,9 @@ public class ModItems {
     public static final Item DUCKWEED = register(new PlaceableOnWaterItem(ModBlocks.DUCKWEED, new Item.Settings()), "duckweed");
     public static final Item LEAF_LITTER = registerVanilla(new PlaceableOnWaterLitter(com.blackgear.vanillabackport.common.registries.ModBlocks.LEAF_LITTER.get(), new Item.Settings()), "minecraft:leaf_litter");
 
+    public static final Item DEER_SPAWN_EGG = register(
+            new SpawnEggItem(ModEntities.DEER, 0x000000, 0x000000, new Item.Settings()),
+            "deer_spawn_egg");
     public static final Item MOOSE_SPAWN_EGG = register(
             new SpawnEggItem(ModEntities.MOOSE, 0x000000, 0x000000, new Item.Settings()),
             "moose_spawn_egg");
