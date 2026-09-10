@@ -49,7 +49,7 @@
       },
       "when": {
         "facing": "north",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": false
       }
     },
@@ -60,7 +60,7 @@
       },
       "when": {
         "facing": "east",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": false
       }
     },
@@ -71,7 +71,7 @@
       },
       "when": {
         "facing": "south",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": false
       }
     },
@@ -82,7 +82,7 @@
       },
       "when": {
         "facing": "west",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": false
       }
     },
@@ -221,7 +221,7 @@
       },
       "when": {
         "facing": "north",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": true
       }
     },
@@ -232,7 +232,7 @@
       },
       "when": {
         "facing": "east",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": true
       }
     },
@@ -243,7 +243,7 @@
       },
       "when": {
         "facing": "south",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": true
       }
     },
@@ -254,7 +254,7 @@
       },
       "when": {
         "facing": "west",
-        "segment_amount": "2|3",
+        "segment_amount": "2",
         "waterlogged": true
       }
     },
