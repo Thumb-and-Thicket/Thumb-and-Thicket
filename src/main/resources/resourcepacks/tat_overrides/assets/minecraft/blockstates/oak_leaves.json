@@ -2,7 +2,7 @@
   "multipart": [
     {
       "when": {
-        "top": "true"
+        "up": "false"
       },
       "apply": {
         "model": "minecraft:block/leaves/oak_leaves_upper"
@@ -10,95 +10,127 @@
     },
     {
       "when": {
-        "top": "false"
+        "up": "true"
       },
       "apply": {
-        "model": "minecraft:block/leaves/oak_leaves"
+        "model": "minecraft:block/oak_leaves"
       }
     },
     {
-      "apply": [
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 0,
-          "y": 0
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 0,
-          "y": 90
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 0,
-          "y": 180
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 0,
-          "y": 270
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 90,
-          "y": 0
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 90,
-          "y": 90
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 90,
-          "y": 180
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 90,
-          "y": 270
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 180,
-          "y": 0
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 180,
-          "y": 90
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 180,
-          "y": 180
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 180,
-          "y": 270
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 270,
-          "y": 0
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 270,
-          "y": 90
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 270,
-          "y": 180
-        },
-        {
-          "model": "minecraft:block/leaves/oak_leaves_outer",
-          "x": 270,
-          "y": 270
-        }
-      ]
+      "when": {
+        "up": "false",
+        "north": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_upper"
+      }
+    },
+    {
+      "when": {
+        "down": "false",
+        "north": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_lower"
+      }
+    },
+    {
+      "when": {
+        "east": "false",
+        "north": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_left"
+      }
+    },
+    {
+      "when": {
+        "west": "false",
+        "north": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_right"
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "west": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_upper",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "down": "false",
+        "west": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_lower",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "south": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_upper",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "down": "false",
+        "south": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_lower",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "false",
+        "south": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_left",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "east": "false",
+        "south": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "up": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_upper",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "minecraft:block/leaves/oak_leaves_outer_lower",
+        "y": 90
+      }
     }
   ]
 }

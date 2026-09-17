@@ -10,7 +10,6 @@
     "ChunkGeneratorMixin",
     "TransitionBlockMixin",
     "EscapeDangerGoalMixin",
-    "ExampleMixin",
     "ItemStackMixin",
     "PlaceableOnWaterItemMixin",
     "SettingsAccessor",

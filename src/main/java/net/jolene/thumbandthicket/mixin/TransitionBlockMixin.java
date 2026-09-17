@@ -19,89 +19,44 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Block.class)
 public abstract class TransitionBlockMixin {
 
-    // TRANSITION PROPERTIES
-
-    @Inject(method = "appendProperties", at = @At("TAIL"))
-    private void thumbandthicket$addProperties(
-            StateManager.Builder<Block, BlockState> builder,
-            CallbackInfo ci
-    ) {
-        builder.add(
-                ModProperties.DAMP,
-                ModProperties.STONY
-        );
-    }
-
     // PLACEMENT TRANSITIONS
 
-    @Inject(
-            method = "getPlacementState",
-            at = @At("RETURN"),
-            cancellable = true
-    )
-    private void thumbandthicket$updatePlacedTransitionStates(
-            ItemPlacementContext context,
-            CallbackInfoReturnable<BlockState> cir
-    ) {
+    @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
+    private void thumbandthicket$updatePlacedTransitionStates(ItemPlacementContext context, CallbackInfoReturnable<BlockState> cir) {
         BlockState state = cir.getReturnValue();
 
-        if (state == null) {
-            return;
-        }
-
+        if (state == null) return;
         World world = context.getWorld();
         BlockPos pos = context.getBlockPos();
 
         // DAMP SAND
 
-        if (state.isOf(Blocks.SAND)
-                && state.contains(ModProperties.DAMP)) {
-
+        if (state.isOf(Blocks.SAND) && state.contains(ModProperties.DAMP)) {
             boolean damp = false;
 
-            for (Direction direction :
-                    Direction.Type.HORIZONTAL) {
-
-                if (world.getBlockState(
-                        pos.offset(direction)
-                ).isOf(ModBlocks.WET_SAND)) {
-
+            for (Direction direction : Direction.Type.HORIZONTAL) {
+                if (world.getBlockState(pos.offset(direction)).isOf(ModBlocks.WET_SAND)) {
                     damp = true;
                     break;
                 }
             }
-
-            state = state.with(
-                    ModProperties.DAMP,
-                    damp
-            );
+            state = state.with(ModProperties.DAMP, damp);
         }
 
         // STONY DIRT
 
-        if (state.isOf(Blocks.DIRT)
-                && state.contains(ModProperties.STONY)) {
+        if (state.isOf(Blocks.DIRT) && state.contains(ModProperties.STONY)) {
 
             boolean touchesStone = false;
-
             for (Direction direction : Direction.values()) {
 
-                if (world.getBlockState(
-                        pos.offset(direction)
-                ).isOf(Blocks.STONE)) {
-
+                if (world.getBlockState(pos.offset(direction)).isOf(Blocks.STONE)) {
                     touchesStone = true;
                     break;
                 }
             }
-
-            boolean stony = touchesStone
-                    && world.getRandom().nextBoolean();
-
-            state = state.with(
-                    ModProperties.STONY,
-                    stony
-            );
+            boolean stony = touchesStone && world.getRandom().nextBoolean();
+            state = state.with(ModProperties.STONY, stony);
         }
 
         cir.setReturnValue(state);

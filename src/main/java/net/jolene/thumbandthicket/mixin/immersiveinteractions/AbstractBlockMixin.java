@@ -5,9 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.jolene.thumbandthicket.ThumbAndThicket;
 import net.jolene.thumbandthicket.block.ModBlockTags;
-import net.jolene.thumbandthicket.block.ModBlocks;
 import net.jolene.thumbandthicket.util.ModLootTableUtil;
-import net.jolene.thumbandthicket.util.ModProperties;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.item.HoneycombItem;
@@ -22,13 +20,10 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
@@ -36,280 +31,60 @@ import java.util.List;
 @Mixin(AbstractBlock.class)
 public class AbstractBlockMixin {
 
-
     @Inject(method = "getDroppedStacks", at = @At("HEAD"))
-    private void gay(
-            BlockState state,
-            LootContextParameterSet.Builder builder,
-            CallbackInfoReturnable<List<ItemStack>> cir
-    ) {
+    private void gay(BlockState state, LootContextParameterSet.Builder builder, CallbackInfoReturnable<List<ItemStack>> cir) {
         ServerWorld world = builder.getWorld();
         Block block = state.getBlock();
         Vec3d origin = builder.get(LootContextParameters.ORIGIN);
-
         RegistryKey<LootTable> lootTableRegistryKey = null;
         LootContextType lootContextType = null;
-
         int dropCount = 1;
 
-        if (state.contains(DoorBlock.HALF)
-                && state.get(DoorBlock.HALF)
-                == DoubleBlockHalf.UPPER) {
-
-            return;
-        }
+        if (state.contains(DoorBlock.HALF) && state.get(DoorBlock.HALF) == DoubleBlockHalf.UPPER) return;
 
         if (state.isIn(ModBlockTags.MOSSY_BLOCKS)) {
-
-            lootTableRegistryKey =
-                    ModLootTableUtil.REMOVE_MOSS_LOOT;
-
-            lootContextType =
-                    ModLootTableUtil.REMOVE_MOSS;
+            lootTableRegistryKey = ModLootTableUtil.REMOVE_MOSS_LOOT;
+            lootContextType = ModLootTableUtil.REMOVE_MOSS;
         }
 
-        if (block.toString().contains("waxed")) {
-
-            block = HoneycombItem.WAXED_TO_UNWAXED_BLOCKS
-                    .get()
-                    .get(block);
-        }
-
+        if (block.toString().contains("waxed")) block = HoneycombItem.WAXED_TO_UNWAXED_BLOCKS.get().get(block);
         if (block instanceof Oxidizable oxidizable) {
-
-            dropCount = Math.max(
-                    1,
-                    oxidizable.getDegradationLevel().ordinal()
-            );
-
-            lootTableRegistryKey =
-                    ModLootTableUtil.PATINA_LOOT;
-
-            lootContextType =
-                    ModLootTableUtil.PATINA;
+            dropCount = Math.max(1, oxidizable.getDegradationLevel().ordinal());
+            lootTableRegistryKey = ModLootTableUtil.PATINA_LOOT;
+            lootContextType = ModLootTableUtil.PATINA;
         }
 
-        if (lootContextType != null
-                && lootTableRegistryKey != null) {
-
-            LootTable lootTable =
-                    world.getServer()
-                            .getReloadableRegistries()
-                            .getLootTable(lootTableRegistryKey);
-
-            LootContextParameterSet lootContextParameterSet =
-                    new LootContextParameterSet.Builder(world)
-                            .add(
-                                    LootContextParameters.ORIGIN,
-                                    origin
-                            )
-                            .add(
-                                    LootContextParameters.BLOCK_STATE,
-                                    state
-                            )
-                            .build(lootContextType);
-
-            List<ItemStack> list =
-                    lootTable.generateLoot(lootContextParameterSet);
+        if (lootContextType != null && lootTableRegistryKey != null) {
+            LootTable lootTable = world.getServer().getReloadableRegistries().getLootTable(lootTableRegistryKey);
+            LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(world).add(LootContextParameters.ORIGIN, origin).add(LootContextParameters.BLOCK_STATE, state).build(lootContextType);
+            List<ItemStack> list = lootTable.generateLoot(lootContextParameterSet);
 
             for (ItemStack stack : list) {
-
-                stack.setCount(
-                        stack.getCount() * dropCount
-                );
-
-                Block.dropStack(
-                        world,
-                        BlockPos.ofFloored(origin),
-                        stack
-                );
+                stack.setCount(stack.getCount() * dropCount);
+                Block.dropStack(world, BlockPos.ofFloored(origin), stack);
             }
         }
     }
 
-
-    @WrapOperation(
-            method = "getDroppedStacks",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/block/AbstractBlock;getLootTableKey()Lnet/minecraft/registry/RegistryKey;"
-            )
-    )
-    private RegistryKey<LootTable> thumbandthicket$dropDifferentStack(
-            AbstractBlock instance,
-            Operation<RegistryKey<LootTable>> original,
-            @Local(argsOnly = true) BlockState state
-    ) {
+    @WrapOperation(method = "getDroppedStacks", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/AbstractBlock;getLootTableKey()Lnet/minecraft/registry/RegistryKey;"))
+    private RegistryKey<LootTable> thumbandthicket$dropDifferentStack(AbstractBlock instance, Operation<RegistryKey<LootTable>> original, @Local(argsOnly = true) BlockState state) {
         Block block = (Block) instance;
-
         String targetString = "";
+        String[] blockString = Registries.BLOCK.getId(block).toString().split(":");
 
-        String[] blockString =
-                Registries.BLOCK
-                        .getId(block)
-                        .toString()
-                        .split(":");
+        if (state.isIn(ModBlockTags.CRACKED_BLOCKS) && !blockString[1].contains("infested")) targetString = "cracked_";
+        if (state.isIn(ModBlockTags.MOSSY_BLOCKS)) targetString = "mossy_";
+        if (state.isIn(ModBlockTags.CHISELED_BLOCKS)) targetString = "chiseled_";
+        if (blockString[1].contains("waxed")) block = HoneycombItem.WAXED_TO_UNWAXED_BLOCKS.get().get(block);
 
-        if (state.isIn(ModBlockTags.CRACKED_BLOCKS)
-                && !blockString[1].contains("infested")) {
+        if (block instanceof Oxidizable) return original.call(Oxidizable.getUnaffectedOxidationBlock(block));
 
-            targetString = "cracked_";
-        }
-
-        if (state.isIn(ModBlockTags.MOSSY_BLOCKS)) {
-
-            targetString = "mossy_";
-        }
-
-        if (state.isIn(ModBlockTags.CHISELED_BLOCKS)) {
-
-            targetString = "chiseled_";
-        }
-
-        if (blockString[1].contains("waxed")) {
-
-            block = HoneycombItem.WAXED_TO_UNWAXED_BLOCKS
-                    .get()
-                    .get(block);
-        }
-
-        if (block instanceof Oxidizable) {
-
-            return original.call(
-                    Oxidizable.getUnaffectedOxidationBlock(block)
-            );
-        }
-
-        Block block1 =
-                ThumbAndThicket.thumbandthicket$getBlockByName(
-                        blockString[1].replace(
-                                targetString,
-                                ""
-                        )
-                );
-
-        return block1 instanceof AirBlock
-                ? original.call(instance)
-                : original.call(block1);
+        Block block1 = ThumbAndThicket.thumbandthicket$getBlockByName(blockString[1].replace(targetString,""));
+        return block1 instanceof AirBlock ? original.call(instance) : original.call(block1);
     }
 
-
-    @WrapOperation(
-            method = "getDroppedStacks",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/loot/context/LootContextParameterSet$Builder;add(Lnet/minecraft/loot/context/LootContextParameter;Ljava/lang/Object;)Lnet/minecraft/loot/context/LootContextParameterSet$Builder;"
-            )
-    )
-    private <T> LootContextParameterSet.Builder gay(
-            LootContextParameterSet.Builder instance,
-            LootContextParameter<T> parameter,
-            T value,
-            Operation<LootContextParameterSet.Builder> original,
-            @Local(argsOnly = true) BlockState state
-    ) {
-        return state.getBlock() instanceof Oxidizable
-                && state.getBlock() instanceof DoorBlock
-                && state.get(Properties.DOUBLE_BLOCK_HALF)
-                == DoubleBlockHalf.LOWER
-
-                ? original.call(
-                instance,
-                parameter,
-                Oxidizable
-                        .getUnaffectedOxidationBlock(
-                                state.getBlock()
-                        )
-                        .getDefaultState()
-        )
-
-                : original.call(
-                instance,
-                parameter,
-                value
-        );
-    }
-
-    // TRANSITION BLOCK NEIGHBOUR UPDATES
-
-    @Inject(method = "neighborUpdate", at = @At("TAIL"))
-    private void thumbandthicket$updateTransitionStates(
-            BlockState state,
-            World world,
-            BlockPos pos,
-            Block sourceBlock,
-            BlockPos sourcePos,
-            boolean notify,
-            CallbackInfo ci
-    ) {
-        if (world.isClient()) {
-            return;
-        }
-
-        // DAMP SAND
-
-        if (state.isOf(Blocks.SAND)
-                && state.contains(ModProperties.DAMP)) {
-
-            boolean damp = false;
-
-            for (Direction direction :
-                    Direction.Type.HORIZONTAL) {
-
-                if (world.getBlockState(
-                        pos.offset(direction)
-                ).isOf(ModBlocks.WET_SAND)) {
-
-                    damp = true;
-                    break;
-                }
-            }
-
-            if (state.get(ModProperties.DAMP) != damp) {
-
-                world.setBlockState(
-                        pos,
-                        state.with(
-                                ModProperties.DAMP,
-                                damp
-                        ),
-                        Block.NOTIFY_LISTENERS
-                );
-            }
-
-            return;
-        }
-
-        // STONY DIRT
-
-        if (state.isOf(Blocks.DIRT)
-                && state.contains(ModProperties.STONY)
-                && state.get(ModProperties.STONY)) {
-
-            boolean touchesStone = false;
-
-            for (Direction direction : Direction.values()) {
-
-                if (world.getBlockState(
-                        pos.offset(direction)
-                ).isOf(Blocks.STONE)) {
-
-                    touchesStone = true;
-                    break;
-                }
-            }
-
-            if (!touchesStone) {
-
-                world.setBlockState(
-                        pos,
-                        state.with(
-                                ModProperties.STONY,
-                                false
-                        ),
-                        Block.NOTIFY_LISTENERS
-                );
-            }
-        }
+    @WrapOperation(method = "getDroppedStacks", at = @At(value = "INVOKE", target = "Lnet/minecraft/loot/context/LootContextParameterSet$Builder;add(Lnet/minecraft/loot/context/LootContextParameter;Ljava/lang/Object;)Lnet/minecraft/loot/context/LootContextParameterSet$Builder;"))
+    private <T> LootContextParameterSet.Builder gay(LootContextParameterSet.Builder instance, LootContextParameter<T> parameter, T value, Operation<LootContextParameterSet.Builder> original, @Local(argsOnly = true) BlockState state) {
+        return state.getBlock() instanceof Oxidizable && state.getBlock() instanceof DoorBlock && state.get(Properties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.LOWER ? original.call(instance, parameter, Oxidizable.getUnaffectedOxidationBlock(state.getBlock()).getDefaultState()) : original.call(instance, parameter, value);
     }
 }

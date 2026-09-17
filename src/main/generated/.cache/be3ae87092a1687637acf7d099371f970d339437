@@ -1,4 +1,5 @@
-// 1.21.1	2026-08-31T17:30:37.26174	Thumb & Thicket/Block Loot Tables
+// 1.21.1	2026-09-14T17:35:34.390875	Thumb & Thicket/Block Loot Tables
 6c360b4b8deea52bb9d6753d55ba12937b690401 data/thumbandthicket/loot_table/blocks/puffed_dandelion.json
-d10a3f1fd956cc4beed9c6d95179a5b91104a738 data/thumbandthicket/loot_table/blocks/root_block.json
 f0f7e7fae8e87e9df2cd6a6ff5f9b4f8997bf9b4 data/thumbandthicket/loot_table/blocks/rooted_grass.json
+d10a3f1fd956cc4beed9c6d95179a5b91104a738 data/thumbandthicket/loot_table/blocks/root_block.json
+866f38e94a5addb88186b86add6ce837bddd3a7f data/thumbandthicket/loot_table/blocks/wet_sand.json

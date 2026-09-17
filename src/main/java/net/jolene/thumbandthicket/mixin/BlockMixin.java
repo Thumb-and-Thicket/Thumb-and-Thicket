@@ -3,6 +3,7 @@ package net.jolene.thumbandthicket.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.jolene.thumbandthicket.block.ModBlocks;
+import net.jolene.thumbandthicket.util.ModProperties;
 import net.jolene.thumbandthicket.util.Rooty;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,7 +36,7 @@ public abstract class BlockMixin {
     @Inject(method = "getPlacementState", at = @At("HEAD"), cancellable = true)
     private void thumbandthicket$modifyPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
         Block block = (Block)(Object)this;
-        BlockState state = block.getDefaultState();
+        BlockState state = cir.getReturnValue();
         if (state.contains(ROOTY) && state.contains(ROOTY)) {
             if (state.get(AXIS).isVertical()) {
                 Block blockDown = ctx.getWorld().getBlockState(ctx.getBlockPos().down()).getBlock();
@@ -44,12 +46,21 @@ public abstract class BlockMixin {
             }
         }
         if (block instanceof FarmlandBlock) cir.setReturnValue(state.with(FERTILIZED, false));
+//        if (state.isOf(Blocks.SAND)) {
+//            for (Direction direction : Direction.Type.HORIZONTAL) {
+//                if (ctx.getWorld().getBlockState(ctx.getBlockPos().offset(direction)).isOf(ModBlocks.WET_SAND)) {
+//                    cir.setReturnValue(state.with(DAMP, true));
+//                    break;
+//                }
+//            }
+//        }
     }
 
     @Inject(method = "appendProperties", at = @At("TAIL"))
-    private void thumbandthicket$appendLogProperties(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci){
-
+    private void thumbandthicket$appendProperties(StateManager.Builder<Block, BlockState> builder, CallbackInfo ci){
         Block block = (Block) (Object) this;
+
+//        if (block.getDefaultState().isOf(Blocks.SAND)) builder.add(DAMP);
     }
 
     @WrapMethod(method = "getDefaultState")

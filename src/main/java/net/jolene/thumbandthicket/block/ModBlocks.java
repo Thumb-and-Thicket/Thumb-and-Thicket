@@ -91,7 +91,12 @@ public class ModBlocks {
     public static final Block ATTACHED_PALE_GOURD_STEM = register(new AttachedStemBlock(ModKeys.PALE_GOURD, ModKeys.PALE_GOURD_STEM, ModKeys.PALE_GOURD_SEEDS,AbstractBlock.Settings.copy(Blocks.ATTACHED_PUMPKIN_STEM)), "attached_pale_gourd_stem", false);
     public static final Block PALE_GOURD_STEM = register(new StemBlock(ModKeys.PALE_GOURD, ModKeys.ATTACHED_PALE_GOURD_STEM, ModKeys.PALE_GOURD_SEEDS,AbstractBlock.Settings.copy(Blocks.PUMPKIN_STEM)), "pale_gourd_stem", false);
 
-    public static final Block WET_SAND = register(new Block(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_sand", true);
+    public static final Block WET_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_sand", true);
+    public static final Block DAMP_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "damp_sand", false);
+    public static final Block WET_RED_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_red_sand", true);
+    public static final Block DAMP_RED_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "damp_red_sand", false);
+    public static final Block WET_SUSPICIOUS_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_suspicious_sand", true);
+    public static final Block DAMP_SUSPICIOUS_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "damp_suspicious_sand", false);
     public static final Block ROOT_BLOCK = register(new RootBlock(AbstractBlock.Settings.copy(Blocks.ROOTED_DIRT).sounds(BlockSoundGroup.HANGING_ROOTS).ticksRandomly().requiresTool()), "root_block", true);
     public static final Block ROOTED_GRASS = register(new RootedGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.HANGING_ROOTS).ticksRandomly().requiresTool()), "rooted_grass", true);
     public static final Block ROOTED_PODZOL = register(new RootedPodzolBlock(AbstractBlock.Settings.copy(Blocks.PODZOL).sounds(BlockSoundGroup.HANGING_ROOTS).requiresTool()), "rooted_podzol", true);

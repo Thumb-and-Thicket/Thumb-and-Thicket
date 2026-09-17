@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves/leaves_outer_right",
+  "textures": {
+    "outer": "block/leaves/oak_leaves_outer"
+  }
+}

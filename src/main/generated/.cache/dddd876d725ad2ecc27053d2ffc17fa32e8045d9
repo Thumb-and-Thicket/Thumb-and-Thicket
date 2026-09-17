@@ -1,5 +1,5 @@
-// 1.21.1	2026-08-31T17:30:37.260365	Thumb & Thicket/Tags for minecraft:item
+// 1.21.1	2026-09-14T17:35:34.389789	Thumb & Thicket/Tags for minecraft:item
 b2825e8d1d051b7a75f81be6c4bd799d3d699a0f data/thumbandthicket/tags/item/can_apply_moss.json
 ef44508ba903dd2a55214efa718905c8c1437e66 data/thumbandthicket/tags/item/can_apply_bark.json
-0b4e9eb2e57b7d0790ad2a0344733be5de39a297 data/thumbandthicket/tags/item/can_repair_brick.json
 c791c74536458ef3643ccac7a54488c25bd50654 data/thumbandthicket/tags/item/can_wax_copper.json
+0b4e9eb2e57b7d0790ad2a0344733be5de39a297 data/thumbandthicket/tags/item/can_repair_brick.json
