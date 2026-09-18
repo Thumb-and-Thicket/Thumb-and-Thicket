@@ -1,0 +1,9 @@
+{
+	"parent": "minecraft:block/leaves/leaves_upper",
+	"textures": {
+		"all": "block/leaves/acacia_leaves_upper_side",
+		"top": "block/leaves/acacia_leaves_upper_top",
+		"bottom": "block/leaves/acacia_leaves_upper_bottom",
+		"particle": "block/leaves/acacia_leaves_upper_side"
+	}
+}

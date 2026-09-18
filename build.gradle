@@ -45,7 +45,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "maven.modrinth:6xwxDTgf:ayvoY8lx"
     modImplementation "maven.modrinth:i6fiqm5y:BbIdNbF1"
-    modImplementation "maven.modrinth:XaDC71GB:xziCgMIU"
+    modImplementation "maven.modrinth:XaDC71GB:xDAotknu"
 
 }
 

@@ -37,14 +37,14 @@ public abstract class BlockMixin {
     private void thumbandthicket$modifyPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
         Block block = (Block)(Object)this;
         BlockState state = cir.getReturnValue();
-        if (state.contains(ROOTY) && state.contains(ROOTY)) {
-            if (state.get(AXIS).isVertical()) {
-                Block blockDown = ctx.getWorld().getBlockState(ctx.getBlockPos().down()).getBlock();
-                Block blockUp = ctx.getWorld().getBlockState(ctx.getBlockPos().up()).getBlock();
-                if (blockDown.equals(ModBlocks.ROOT_BLOCK)) cir.setReturnValue(defaultState.with(ROOTY, Rooty.TOP));
-                if (blockUp.equals(ModBlocks.ROOT_BLOCK)) cir.setReturnValue(defaultState.with(ROOTY, Rooty.BOTTOM));
-            }
-        }
+//        if (state.contains(ROOTY) && state.contains(ROOTY)) {
+//            if (state.get(AXIS).isVertical()) {
+//                Block blockDown = ctx.getWorld().getBlockState(ctx.getBlockPos().down()).getBlock();
+//                Block blockUp = ctx.getWorld().getBlockState(ctx.getBlockPos().up()).getBlock();
+//                if (blockDown.equals(ModBlocks.ROOT_BLOCK)) cir.setReturnValue(defaultState.with(ROOTY, Rooty.TOP));
+//                if (blockUp.equals(ModBlocks.ROOT_BLOCK)) cir.setReturnValue(defaultState.with(ROOTY, Rooty.BOTTOM));
+//            }
+//        }
         if (block instanceof FarmlandBlock) cir.setReturnValue(state.with(FERTILIZED, false));
 //        if (state.isOf(Blocks.SAND)) {
 //            for (Direction direction : Direction.Type.HORIZONTAL) {

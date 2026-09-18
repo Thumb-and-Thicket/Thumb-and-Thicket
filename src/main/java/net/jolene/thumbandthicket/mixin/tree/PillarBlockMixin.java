@@ -105,7 +105,7 @@ public class PillarBlockMixin extends Block {
 
         if (newState.contains(SLICE)) {
             Direction logBlockDirection = thumbandthicket$determineRootBlockDirection(state, pos, world, state.getBlock());
-            newState = thumbandthicket$calculateSlice(newState, world, pos);
+            if (newState.get(ROOTY) != Rooty.NONE) newState = thumbandthicket$calculateSlice(newState, world, pos);
 
             if (logBlockDirection != null){
                 Direction invertedLogBlockDirection = logBlockDirection.getOpposite();

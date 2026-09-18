@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves/leaves_outer_right",
+  "textures": {
+    "outer": "block/leaves/flowering_azalea_leaves_outer"
+  }
+}

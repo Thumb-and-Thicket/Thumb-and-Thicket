@@ -21,44 +21,44 @@ public abstract class TransitionBlockMixin {
 
     // PLACEMENT TRANSITIONS
 
-    @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
-    private void thumbandthicket$updatePlacedTransitionStates(ItemPlacementContext context, CallbackInfoReturnable<BlockState> cir) {
-        BlockState state = cir.getReturnValue();
-
-        if (state == null) return;
-        World world = context.getWorld();
-        BlockPos pos = context.getBlockPos();
-
-        // DAMP SAND
-
-        if (state.isOf(Blocks.SAND) && state.contains(ModProperties.DAMP)) {
-            boolean damp = false;
-
-            for (Direction direction : Direction.Type.HORIZONTAL) {
-                if (world.getBlockState(pos.offset(direction)).isOf(ModBlocks.WET_SAND)) {
-                    damp = true;
-                    break;
-                }
-            }
-            state = state.with(ModProperties.DAMP, damp);
-        }
-
-        // STONY DIRT
-
-        if (state.isOf(Blocks.DIRT) && state.contains(ModProperties.STONY)) {
-
-            boolean touchesStone = false;
-            for (Direction direction : Direction.values()) {
-
-                if (world.getBlockState(pos.offset(direction)).isOf(Blocks.STONE)) {
-                    touchesStone = true;
-                    break;
-                }
-            }
-            boolean stony = touchesStone && world.getRandom().nextBoolean();
-            state = state.with(ModProperties.STONY, stony);
-        }
-
-        cir.setReturnValue(state);
-    }
+//    @Inject(method = "getPlacementState", at = @At("RETURN"), cancellable = true)
+//    private void thumbandthicket$updatePlacedTransitionStates(ItemPlacementContext context, CallbackInfoReturnable<BlockState> cir) {
+//        BlockState state = cir.getReturnValue();
+//
+//        if (state == null) return;
+//        World world = context.getWorld();
+//        BlockPos pos = context.getBlockPos();
+//
+//        // DAMP SAND
+//
+//        if (state.isOf(Blocks.SAND) && state.contains(ModProperties.DAMP)) {
+//            boolean damp = false;
+//
+//            for (Direction direction : Direction.Type.HORIZONTAL) {
+//                if (world.getBlockState(pos.offset(direction)).isOf(ModBlocks.WET_SAND)) {
+//                    damp = true;
+//                    break;
+//                }
+//            }
+//            state = state.with(ModProperties.DAMP, damp);
+//        }
+//
+//        // STONY DIRT
+//
+//        if (state.isOf(Blocks.DIRT) && state.contains(ModProperties.STONY)) {
+//
+//            boolean touchesStone = false;
+//            for (Direction direction : Direction.values()) {
+//
+//                if (world.getBlockState(pos.offset(direction)).isOf(Blocks.STONE)) {
+//                    touchesStone = true;
+//                    break;
+//                }
+//            }
+//            boolean stony = touchesStone && world.getRandom().nextBoolean();
+//            state = state.with(ModProperties.STONY, stony);
+//        }
+//
+//        cir.setReturnValue(state);
+//    }
 }

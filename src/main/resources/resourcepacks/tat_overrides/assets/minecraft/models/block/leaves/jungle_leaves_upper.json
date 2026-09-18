@@ -1,0 +1,9 @@
+{
+	"parent": "minecraft:block/leaves/leaves_upper",
+	"textures": {
+		"all": "block/leaves/jungle_leaves_upper_side",
+		"top": "block/leaves/jungle_leaves_upper_top",
+		"bottom": "block/leaves/jungle_leaves_upper_bottom",
+		"particle": "block/leaves/jungle_leaves_upper_side"
+	}
+}

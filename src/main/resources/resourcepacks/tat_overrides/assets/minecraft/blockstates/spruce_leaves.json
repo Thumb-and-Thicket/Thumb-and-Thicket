@@ -5,7 +5,7 @@
         "up": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_upper"
+        "model": "minecraft:block/leaves/spruce_leaves_upper"
       }
     },
     {
@@ -13,7 +13,7 @@
         "up": "true"
       },
       "apply": {
-        "model": "minecraft:block/birch_leaves"
+        "model": "minecraft:block/spruce_leaves"
       }
     },
     {
@@ -22,7 +22,7 @@
         "north": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_upper"
+        "model": "minecraft:block/leaves/spruce_leaves_outer_upper"
       }
     },
     {
@@ -31,7 +31,7 @@
         "north": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_lower"
+        "model": "minecraft:block/leaves/spruce_leaves_outer_lower"
       }
     },
     {
@@ -40,7 +40,7 @@
         "north": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_left"
+        "model": "minecraft:block/leaves/spruce_leaves_outer_left"
       }
     },
     {
@@ -49,7 +49,7 @@
         "north": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_right"
+        "model": "minecraft:block/leaves/spruce_leaves_outer_right"
       }
     },
     {
@@ -58,7 +58,7 @@
         "west": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_upper",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_upper",
         "y": 270
       }
     },
@@ -68,7 +68,7 @@
         "west": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_lower",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_lower",
         "y": 270
       }
     },
@@ -78,7 +78,7 @@
         "south": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_upper",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_upper",
         "y": 180
       }
     },
@@ -88,7 +88,7 @@
         "south": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_lower",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_lower",
         "y": 180
       }
     },
@@ -98,7 +98,7 @@
         "south": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_left",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_left",
         "y": 180
       }
     },
@@ -108,7 +108,7 @@
         "south": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_right",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_right",
         "y": 180
       }
     },
@@ -118,7 +118,7 @@
         "east": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_upper",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_upper",
         "y": 90
       }
     },
@@ -128,7 +128,7 @@
         "east": "false"
       },
       "apply": {
-        "model": "minecraft:block/leaves/birch_leaves_outer_lower",
+        "model": "minecraft:block/leaves/spruce_leaves_outer_lower",
         "y": 90
       }
     }
