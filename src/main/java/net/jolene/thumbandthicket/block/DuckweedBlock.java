@@ -29,6 +29,10 @@ public class DuckweedBlock extends PlantBlock implements Waterloggable {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(INNER, false));
     }
+    @Override
+    protected float getMaxHorizontalModelOffset() {
+        return 1.0F / 16.0F;
+    }
 
     @Override
     protected MapCodec<? extends PlantBlock> getCodec() {
