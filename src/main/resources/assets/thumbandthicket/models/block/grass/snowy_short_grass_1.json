@@ -1,8 +1,8 @@
 {
   "ambientocclusion": true,
   "textures": {
-    "tinted_cross": "thumbandthicket:block/snowy_short_grass_tint",
-    "cross": "thumbandthicket:block/snowy_short_grass",
+    "tinted_cross": "thumbandthicket:block/grass/short_grass_tint_1",
+    "cross": "thumbandthicket:block/grass/snowy_short_grass_1",
     "particle": "#cross"
   },
   "elements": [

@@ -1,9 +1,24 @@
 {
   "multipart": [
     {
-      "apply": {
-        "model": "thumbandthicket:block/snowy_short_grass"
-      },
+      "apply": [
+        {
+          "model": "thumbandthicket:block/grass/snowy_short_grass_1",
+          "weight": 1
+        },
+        {
+          "model": "thumbandthicket:block/grass/snowy_short_grass_2",
+          "weight": 1
+        },
+        {
+          "model": "thumbandthicket:block/grass/snowy_short_grass_3",
+          "weight": 1
+        },
+        {
+          "model": "thumbandthicket:block/grass/snowy_short_grass_4",
+          "weight": 1
+        }
+      ],
       "when": {
         "layers": "0|1|2|3|4|5|6|7"
       }
