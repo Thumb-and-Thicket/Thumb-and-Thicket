@@ -34,9 +34,7 @@ public abstract class TreeFeatureMixin {
         world.setBlockState(pos, state, Block.NOTIFY_ALL);
     }
     @WrapOperation(method = "generate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/trunk/TrunkPlacer;getHeight(Lnet/minecraft/util/math/random/Random;)I"))
-    private int thumbandthicket$increaseTreeHeight(
-            TrunkPlacer trunkPlacer, Random random, Operation<Integer> original)
-    {
+    private int thumbandthicket$increaseTreeHeight(TrunkPlacer trunkPlacer, Random random, Operation<Integer> original) {
         return original.call(trunkPlacer, random) + 1;
     }
 

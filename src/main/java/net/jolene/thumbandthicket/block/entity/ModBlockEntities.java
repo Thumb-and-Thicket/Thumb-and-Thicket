@@ -2,6 +2,7 @@ package net.jolene.thumbandthicket.block.entity;
 
 import net.jolene.thumbandthicket.block.ModBlocks;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.BrushableBlockEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -12,6 +13,7 @@ public class ModBlockEntities {
     public static BlockEntityType<RootBlockEntity> ROOT_BLOCK_ENTITY;
     public static BlockEntityType<FlowerCropBlockEntity> FLOWER_CROP_BLOCK;
     public static BlockEntityType<ClamSlabBlockEntity> CLAM_SLAB_BLOCK;
+    public static BlockEntityType<BrushableBlockEntity> BRUSHABLE_BLOCK_ENTITY;
 
     public static void registerModBlockEntities() {
         ROOT_BLOCK_ENTITY = Registry.register(
@@ -28,6 +30,11 @@ public class ModBlockEntities {
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of(MOD_ID, "clam_slab_block"),
                 BlockEntityType.Builder.create(ClamSlabBlockEntity::new, ModBlocks.CLAM_SLAB_BLOCK).build()
+        );
+        BRUSHABLE_BLOCK_ENTITY = Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MOD_ID, "clam_slab_block"),
+                BlockEntityType.Builder.create(BrushableBlockEntity::new, ModBlocks.CLAM_SLAB_BLOCK).build()
         );
     }
 }

@@ -8,11 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "thumbandthicket:mycelial_sprouts",
-              "Properties": {
-                "damp": "true",
-                "stony": "true"
-              }
+              "Name": "thumbandthicket:mycelial_sprouts"
             }
           }
         }

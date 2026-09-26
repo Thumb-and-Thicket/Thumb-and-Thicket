@@ -120,5 +120,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(NEST_BLOCKS)
                 .add(Blocks.HAY_BLOCK);
+
+        getOrCreateTagBuilder(BlockTags.SAND)
+                .add(ModBlocks.DAMP_SAND)
+                .add(ModBlocks.WET_SAND)
+                .add(ModBlocks.DAMP_RED_SAND)
+                .add(ModBlocks.WET_RED_SAND)
+                .add(ModBlocks.DAMP_SUSPICIOUS_SAND)
+                .add(ModBlocks.WET_SUSPICIOUS_SAND);
     }
 }

@@ -25,19 +25,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Objects;
 
-import static net.jolene.thumbandthicket.ThumbAndThicket.isModLoaded;
+import static net.jolene.thumbandthicket.ThumbAndThicket.thumbandthicket$copyProperty;
 
 @Mixin(Item.class)
 public class ItemMixin {
-
-    @Unique
-    private static <T extends Comparable<T>> BlockState copyProperty(BlockState newState, BlockState oldState, Property<T> property) {
-        return newState.with(property, oldState.get(property));
-    }
 
     @WrapMethod(method = "useOnBlock")
     private ActionResult thumbandthicket$useOnBlock(ItemUsageContext context, Operation<ActionResult> original) {
@@ -120,7 +114,7 @@ public class ItemMixin {
             Block newBlock = ThumbAndThicket.thumbandthicket$getBlockByName(blockString);
             if (!(newBlock instanceof AirBlock) && newBlock != state.getBlock()) {
                 BlockState newState = newBlock.getDefaultState();
-                for (Property<?> property : state.getProperties()) if (newState.contains(property)) newState = copyProperty(newState, state, property);
+                for (Property<?> property : state.getProperties()) if (newState.contains(property)) newState = thumbandthicket$copyProperty(newState, state, property);
 
                 if (newBlock instanceof ChiseledBookshelfBlock) newState = newState.with(HorizontalFacingBlock.FACING, context.getHorizontalPlayerFacing().getOpposite());
 

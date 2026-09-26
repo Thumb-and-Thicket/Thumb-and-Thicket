@@ -1,2 +1,3 @@
 accessWidener v2 named
 accessible class net/minecraft/world/gen/trunk/TrunkPlacer
+accessible field net/minecraft/block/entity/BrushableBlockEntity item Lnet/minecraft/item/ItemStack;

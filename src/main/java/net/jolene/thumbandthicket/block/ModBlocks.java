@@ -6,6 +6,7 @@ import net.jolene.thumbandthicket.fluid.ModFluids;
 import net.jolene.thumbandthicket.util.*;
 import net.jolene.thumbandthicket.world.gen.ModConfiguredFeatures;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
@@ -16,6 +17,8 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ColorCode;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
@@ -91,12 +94,12 @@ public class ModBlocks {
     public static final Block ATTACHED_PALE_GOURD_STEM = register(new AttachedStemBlock(ModKeys.PALE_GOURD, ModKeys.PALE_GOURD_STEM, ModKeys.PALE_GOURD_SEEDS,AbstractBlock.Settings.copy(Blocks.ATTACHED_PUMPKIN_STEM)), "attached_pale_gourd_stem", false);
     public static final Block PALE_GOURD_STEM = register(new StemBlock(ModKeys.PALE_GOURD, ModKeys.ATTACHED_PALE_GOURD_STEM, ModKeys.PALE_GOURD_SEEDS,AbstractBlock.Settings.copy(Blocks.PUMPKIN_STEM)), "pale_gourd_stem", false);
 
-    public static final Block WET_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_sand", true);
-    public static final Block DAMP_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "damp_sand", false);
-    public static final Block WET_RED_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_red_sand", true);
-    public static final Block DAMP_RED_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "damp_red_sand", false);
-    public static final Block WET_SUSPICIOUS_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "wet_suspicious_sand", true);
-    public static final Block DAMP_SUSPICIOUS_SAND = register(new WetSandBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool()), "damp_suspicious_sand", false);
+    public static final Block WET_SAND = register(new WetBlock(AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool(), Soakable.WetnessLevel.WET), "wet_sand", true);
+    public static final Block DAMP_SAND = register(new WetColoredFallingBlock(new ColorCode(14406560), AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool(), Soakable.WetnessLevel.DAMP, 4), "damp_sand", true);
+    public static final Block WET_RED_SAND = register(new WetBlock(AbstractBlock.Settings.copy(Blocks.RED_SAND).sounds(BlockSoundGroup.SAND).requiresTool(), Soakable.WetnessLevel.WET), "wet_red_sand", true);
+    public static final Block DAMP_RED_SAND = register(new WetColoredFallingBlock(new ColorCode(11098145), AbstractBlock.Settings.copy(Blocks.RED_SAND).sounds(BlockSoundGroup.SAND).requiresTool(), Soakable.WetnessLevel.DAMP, 4), "damp_red_sand", true);
+    public static final Block WET_SUSPICIOUS_SAND = register(new BrushableWetBlock(ModBlocks.WET_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND_COMPLETE, AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool().pistonBehavior(PistonBehavior.DESTROY), Soakable.WetnessLevel.WET), "suspicious_wet_sand", true);
+    public static final Block DAMP_SUSPICIOUS_SAND = register(new BrushableWetBlock(ModBlocks.DAMP_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND, SoundEvents.ITEM_BRUSH_BRUSHING_SAND_COMPLETE, AbstractBlock.Settings.copy(Blocks.SAND).sounds(BlockSoundGroup.SAND).requiresTool().pistonBehavior(PistonBehavior.DESTROY), Soakable.WetnessLevel.DAMP), "suspicious_damp_sand", true);
     public static final Block ROOT_BLOCK = register(new RootBlock(AbstractBlock.Settings.copy(Blocks.ROOTED_DIRT).sounds(BlockSoundGroup.HANGING_ROOTS).ticksRandomly().requiresTool()), "root_block", true);
     public static final Block ROOTED_GRASS = register(new RootedGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.HANGING_ROOTS).ticksRandomly().requiresTool()), "rooted_grass", true);
     public static final Block ROOTED_PODZOL = register(new RootedPodzolBlock(AbstractBlock.Settings.copy(Blocks.PODZOL).sounds(BlockSoundGroup.HANGING_ROOTS).requiresTool()), "rooted_podzol", true);
@@ -148,8 +151,9 @@ public class ModBlocks {
         });
     }
 
-
     public static void initialize() {
+        BlockEntityType.BRUSHABLE_BLOCK.addSupportedBlock(ModBlocks.DAMP_SUSPICIOUS_SAND);
+        BlockEntityType.BRUSHABLE_BLOCK.addSupportedBlock(ModBlocks.WET_SUSPICIOUS_SAND);
     }
 }
 

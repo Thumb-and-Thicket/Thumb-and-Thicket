@@ -32,7 +32,7 @@ import java.util.List;
 public class AbstractBlockMixin {
 
     @Inject(method = "getDroppedStacks", at = @At("HEAD"))
-    private void gay(BlockState state, LootContextParameterSet.Builder builder, CallbackInfoReturnable<List<ItemStack>> cir) {
+    private void thumbandthicket$dropDifferentStack(BlockState state, LootContextParameterSet.Builder builder, CallbackInfoReturnable<List<ItemStack>> cir) {
         ServerWorld world = builder.getWorld();
         Block block = state.getBlock();
         Vec3d origin = builder.get(LootContextParameters.ORIGIN);

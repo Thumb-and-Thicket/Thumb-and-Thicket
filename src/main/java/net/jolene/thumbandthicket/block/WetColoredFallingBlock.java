@@ -3,8 +3,10 @@ package net.jolene.thumbandthicket.block;
 import net.jolene.thumbandthicket.util.Soakable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ColoredFallingBlock;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ColorCode;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -12,20 +14,27 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class WetBlock extends Block implements Soakable {
+public class WetColoredFallingBlock extends ColoredFallingBlock implements Soakable {
     private final Soakable.WetnessLevel wetnessLevel;
+    private final int fallDelay;
 
     private static World WORLD = null;
     private static BlockPos POS = null;
 
-    public WetBlock(Settings settings, WetnessLevel wetnessLevel) {
-        super(settings);
+    public WetColoredFallingBlock(ColorCode color, Settings settings, WetnessLevel wetnessLevel, int fallDelay) {
+        super(color, settings);
         this.wetnessLevel = wetnessLevel;
+        this.fallDelay = fallDelay;
     }
 
     @Override
     public WetnessLevel getSoakingLevel() {
         return wetnessLevel;
+    }
+
+    @Override
+    public int getFallDelay() {
+        return fallDelay;
     }
 
     @Override
@@ -38,6 +47,7 @@ public class WetBlock extends Block implements Soakable {
     @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (!world.isClient() && world instanceof ServerWorld serverWorld) this.tickSoaking(state, serverWorld, pos);
+        world.scheduleBlockTick(pos, this, this.getFallDelay());
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
@@ -52,12 +62,11 @@ public class WetBlock extends Block implements Soakable {
     public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
         World world = ctx.getWorld();
         BlockPos pos = ctx.getBlockPos();
-        BlockState state = this.getDefaultState();
-        if (!world.isClient() && world instanceof ServerWorld serverWorld) this.tickSoaking(state, serverWorld, pos);
+        if (!world.isClient() && world instanceof ServerWorld serverWorld) this.tickSoaking(this.getDefaultState(), serverWorld, pos);
         return super.getPlacementState(ctx);
     }
 
-//    @Override
+    //    @Override
 //    protected boolean hasRandomTicks(BlockState state) {
 //        World world = WORLD;
 //        BlockPos pos = POS;

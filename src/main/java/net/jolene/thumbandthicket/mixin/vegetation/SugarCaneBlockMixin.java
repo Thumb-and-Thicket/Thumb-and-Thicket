@@ -3,11 +3,13 @@ package net.jolene.thumbandthicket.mixin.vegetation;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.jolene.thumbandthicket.mixin.BlockAccessor;
+import net.jolene.thumbandthicket.util.Soakable;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -33,5 +35,12 @@ public class SugarCaneBlockMixin {
         Block sugarCaneBlock = SugarCaneBlock.class.cast(this);
         BlockState defaultBlockState = sugarCaneBlock.getDefaultState();
         ((BlockAccessor) sugarCaneBlock).invokeSetDefaultState(defaultBlockState.with(SNIPPED, false));
+    }
+
+    @WrapMethod(method = "canPlaceAt")
+    private boolean thumbandthicket$preferWetSand(BlockState state, WorldView world, BlockPos pos, Operation<Boolean> original) {
+        BlockState blockState = world.getBlockState(pos.down());
+        if (blockState.getBlock() instanceof Soakable soakable) return soakable.getSoakingLevel() == Soakable.WetnessLevel.WET;
+        return blockState.isOf(Blocks.SUGAR_CANE) || blockState.isOf(Blocks.MUD);
     }
 }

@@ -1,9 +1,9 @@
 package net.jolene.thumbandthicket.mixin;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ConnectingBlock;
-import net.minecraft.block.LeavesBlock;
+import net.jolene.thumbandthicket.util.Soakable;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BrushableBlockEntity;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.registry.tag.TagKey;
@@ -20,24 +20,22 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 @Mixin(ChunkGenerator.class)
 public abstract class ChunkGeneratorMixin {
 
     @Inject(method = "generateFeatures", at = @At("TAIL"))
     private void thumbandthicket$replaceDirtWithMud(StructureWorldAccess world, Chunk chunk, StructureAccessor structureAccessor, CallbackInfo ci) {
-        if (!(chunk instanceof ProtoChunk protoChunk)) return;
-        thumbandthicket$convertBlocks(world, protoChunk);
+        if (chunk instanceof ProtoChunk protoChunk) thumbandthicket$convertBlocks(world, protoChunk);
     }
 
     @Unique
     private void thumbandthicket$convertBlocks(StructureWorldAccess world, ProtoChunk protoChunk) {
         Set<BlockPos> mudCandidates = new HashSet<>();
         Set<BlockPos> grassCandidates = new HashSet<>();
+        Set<BlockPos> wetSandCandidates = new HashSet<>();
+        Set<BlockPos> dampSandCandidates = new HashSet<>();
 
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
@@ -47,7 +45,13 @@ public abstract class ChunkGeneratorMixin {
 
                     if (state.isIn(BlockTags.DIRT) && thumbandthicket$touchesWater(world, pos)) {
                         mudCandidates.add(pos);
-                        thumbandthicket$spreadMud(world, protoChunk, pos, mudCandidates, 3, BlockTags.DIRT);
+                        thumbandthicket$spreadBlock(world, protoChunk, pos, mudCandidates, 3, BlockTags.DIRT);
+                    }
+
+                    if (state.getBlock() instanceof Soakable && thumbandthicket$touchesWater(world, pos)) {
+                        wetSandCandidates.add(pos);
+                        if (protoChunk.getBlockState(pos.up()) instanceof Soakable) wetSandCandidates.add(pos.up());
+                        thumbandthicket$spreadDampSand(protoChunk, pos, dampSandCandidates, 1);
                     }
 
                     if (state.getBlock() instanceof LeavesBlock) {
@@ -59,27 +63,44 @@ public abstract class ChunkGeneratorMixin {
 //                    if (world.getBiomeFabric(pos).isIn(ConventionalBiomeTags.IS_DESERT)) {
 //                        if (thumbandthicket$touchesWater(world, pos)) {
 //                            mudCandidates.add(pos);
-//                            thumbandthicket$spreadMud(world, protoChunk, pos, mudCandidates, 3, BlockTags.SAND);
+//                            thumbandthicket$spreadBlock(world, protoChunk, pos, mudCandidates, 3, BlockTags.SAND);
 //                        }
 //                        if (thumbandthicket$touchesMud(world, pos)) {
 //                            grassCandidates.add(pos);
-//                            thumbandthicket$spreadMud(world, protoChunk, pos, mudCandidates, 8, BlockTags.SAND);
+//                            thumbandthicket$spreadBlock(world, protoChunk, pos, mudCandidates, 8, BlockTags.SAND);
 //                        }
 //                    }
                 }
             }
         }
-        for (BlockPos pos : mudCandidates) {
-            if (protoChunk.getBlockState(pos).isIn(BlockTags.DIRT)) protoChunk.setBlockState(pos, Blocks.MUD.getDefaultState(), false);
+
+        for (BlockPos pos : mudCandidates) if (protoChunk.getBlockState(pos).isIn(BlockTags.DIRT)) protoChunk.setBlockState(pos, Blocks.MUD.getDefaultState(), false);
+//        for (BlockPos pos : grassCandidates) {
+//            if (protoChunk.getBlockState(pos).isIn(BlockTags.SAND) && world.getBlockState(pos.up()).isAir()) protoChunk.setBlockState(pos, Blocks.GRASS_BLOCK.getDefaultState(), false);
+//            if (protoChunk.getBlockState(pos).isIn(BlockTags.SAND) && !world.getBlockState(pos.up()).isAir()) protoChunk.setBlockState(pos, Blocks.DIRT.getDefaultState(), false);
+//        }
+        for (BlockPos pos : wetSandCandidates) if (protoChunk.getBlockState(pos).getBlock() instanceof Soakable soakable) {
+            soakable.getMaxSoakedResult(protoChunk.getBlockState(pos)).ifPresent(soakedState -> protoChunk.setBlockState(pos, soakedState, false));
+            if (protoChunk.getBlockEntity(pos) instanceof BrushableBlockEntity brushable) {
+                if (brushable instanceof BrushableBlockEntity brushableBlockEntity) {
+                    BlockEntity brushable2 = world.getBlockEntity(pos);
+                    if (brushable2 instanceof BrushableBlockEntity brushableBlockEntity2) brushableBlockEntity2.item = brushableBlockEntity.getItem();
+                }
+            }
         }
-        for (BlockPos pos : grassCandidates) {
-            if (protoChunk.getBlockState(pos).isIn(BlockTags.SAND) && world.getBlockState(pos.up()).isAir()) protoChunk.setBlockState(pos, Blocks.GRASS_BLOCK.getDefaultState(), false);
-            if (protoChunk.getBlockState(pos).isIn(BlockTags.SAND) && !world.getBlockState(pos.up()).isAir()) protoChunk.setBlockState(pos, Blocks.DIRT.getDefaultState(), false);
+        for (BlockPos pos : dampSandCandidates) if (protoChunk.getBlockState(pos).getBlock() instanceof Soakable soakable) {
+            soakable.getSoakingResult(protoChunk.getBlockState(pos)).ifPresent(soakedState -> protoChunk.setBlockState(pos, soakedState, false));
+            if (protoChunk.getBlockEntity(pos) instanceof BrushableBlockEntity brushable) {
+                if (brushable instanceof BrushableBlockEntity brushableBlockEntity) {
+                    BlockEntity brushable2 = world.getBlockEntity(pos);
+                    if (brushable2 instanceof BrushableBlockEntity brushableBlockEntity2) brushableBlockEntity2.item = brushableBlockEntity.getItem();
+                }
+            }
         }
     }
 
     @Unique
-    private void thumbandthicket$spreadMud(StructureWorldAccess world, ProtoChunk chunk, BlockPos origin, Set<BlockPos> candidates, int distances, TagKey blockTag) {
+    private void thumbandthicket$spreadBlock(StructureWorldAccess world, ProtoChunk chunk, BlockPos origin, Set<BlockPos> candidates, int distances, TagKey<Block> blockTag) {
         Queue<BlockPos> blockPosQueue = new ArrayDeque<>();
         Queue<Integer> distancesQueue = new ArrayDeque<>();
         Set<BlockPos> visited = new HashSet<>();
@@ -96,11 +117,14 @@ public abstract class ChunkGeneratorMixin {
 
             for (Direction dir : Direction.Type.HORIZONTAL) {
                 BlockPos next = current.offset(dir);
+                BlockState state = chunk.getBlockState(next);
 
                 if (visited.contains(next)) continue;
                 visited.add(next);
 
-                if (!chunk.getBlockState(next).isIn(blockTag)) continue;
+                if (blockTag == null) {
+                    if (!(state.getBlock() instanceof Soakable)) continue;
+                } else if (!state.isIn(blockTag)) continue;
 
                 float chance = getChance(distances, distance);
 
@@ -109,6 +133,39 @@ public abstract class ChunkGeneratorMixin {
                     blockPosQueue.add(next);
                     distancesQueue.add(distance + 1);
                 }
+            }
+        }
+    }
+
+    @Unique
+    private void thumbandthicket$spreadDampSand(ProtoChunk chunk, BlockPos origin, Set<BlockPos> candidates, int distances) {
+        Queue<BlockPos> blockPosQueue = new ArrayDeque<>();
+        Queue<Integer> distancesQueue = new ArrayDeque<>();
+        Set<BlockPos> visited = new HashSet<>();
+
+        blockPosQueue.add(origin);
+        distancesQueue.add(0);
+        visited.add(origin);
+
+        while (!blockPosQueue.isEmpty()) {
+            BlockPos current = blockPosQueue.poll();
+            int distance = distancesQueue.poll();
+
+            if (distance >= distances) continue;
+
+            for (Direction dir : Direction.Type.HORIZONTAL) {
+                BlockPos next = current.offset(dir);
+                BlockState state = chunk.getBlockState(next);
+
+                if (visited.contains(next)) continue;
+                visited.add(next);
+
+                if (!(state.getBlock() instanceof Soakable)) continue;
+                if (chunk.getBlockState(next.up()) instanceof Soakable) candidates.add(next.up());
+
+                candidates.add(next);
+                blockPosQueue.add(next);
+                distancesQueue.add(distance + 1);
             }
         }
     }
@@ -142,14 +199,12 @@ public abstract class ChunkGeneratorMixin {
     }
 
     @Unique
-    private boolean thumbandthicket$touchesMud(StructureWorldAccess world, BlockPos pos) {
+    private boolean thumbandthicket$touchesBlock(StructureWorldAccess world, BlockPos pos, Soakable.WetnessLevel wetnessLevel) {
         for (Direction dir : Direction.values()) {
-            if (world.getBlockState(pos.offset(dir)).isOf(Blocks.MUD)) {
+            if (world.getBlockState(pos.offset(dir)).getBlock() instanceof Soakable soakable && soakable.getSoakingLevel() == wetnessLevel) {
                 return true;
             }
         }
         return false;
     }
-
-
 }

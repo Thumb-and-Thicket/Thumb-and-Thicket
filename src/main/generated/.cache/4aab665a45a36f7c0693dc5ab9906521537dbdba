@@ -1,17 +1,17 @@
-// 1.21.1	2026-09-14T17:35:34.390001	Thumb & Thicket/Model Definitions
+// 1.21.1	2026-09-26T15:20:57.242036	Thumb & Thicket/Model Definitions
 71ee6cdee8c9d33a28c3659439cc2e75fa5faaa3 assets/thumbandthicket/models/item/dew_drop_sapling.json
 067dde8157fbd5e192b1a3d5b5d1cc85df4b1aa8 assets/thumbandthicket/models/item/snowy_fern.json
 0f40d36f40488aa6897144a0a3ec81f38d10c4a9 assets/thumbandthicket/models/item/cave_parsnip.json
 a2da452e4ec9a6f262a5e5667ffa4c73793413e8 assets/thumbandthicket/models/item/prickly_pear.json
 069db0bb3929763d27f89c58dd4f85dbc7f8b0ec assets/thumbandthicket/models/item/bark.json
 48a764398464aa7ae8ab10b5d3d2a03c5de8e6f2 assets/thumbandthicket/models/item/cooked_venison.json
-88a97a09e8b50b45a75d13c5d94d396a9f0d1872 assets/thumbandthicket/models/item/copper_patina.json
 117d5d2c0bd4ce1fb19d75fa35fb65d3f06e1d94 assets/thumbandthicket/models/item/puffed_dandelion.json
+88a97a09e8b50b45a75d13c5d94d396a9f0d1872 assets/thumbandthicket/models/item/copper_patina.json
 c134fe7628b0dfb3e7ff261552aae46b90bbb40c assets/thumbandthicket/models/item/lucky_clover.json
 f5a7a87d2bb2d94c5cdd089a3848224c55750109 assets/thumbandthicket/models/item/pearl.json
 140dde8ddf49d24423c1b3cdbcc954b712da3ab9 assets/thumbandthicket/models/item/tinged_short_grass.json
-6629a9fb4f0d8ba68ea8955a9cf3676959e07ad8 assets/thumbandthicket/models/item/brine_bucket.json
 8901e0d1c2d30018bd9bf4b04f4fb642ac8454a5 assets/thumbandthicket/models/item/clovers.json
+6629a9fb4f0d8ba68ea8955a9cf3676959e07ad8 assets/thumbandthicket/models/item/brine_bucket.json
 15f38fa5b9dc99d11228bdeb76e087b47aed75ee assets/thumbandthicket/models/item/snowy_short_grass.json
 695b9ba000155f09d443d5aafa0500f86fe544a1 assets/thumbandthicket/models/item/pale_gourd_seeds.json
 b22e9717ff69a9f72a7eea56b7fc70c9ab312243 assets/thumbandthicket/models/item/flower_seeds.json

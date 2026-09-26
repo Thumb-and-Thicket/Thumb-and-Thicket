@@ -24,9 +24,7 @@ public class FoamMeshBuilder {
                     if (state.getFluidState().getFluid() != Fluids.WATER) continue;
                     if (!state.getFluidState().isStill()) continue;
                     if (!world.getBlockState(mutable.up()).getFluidState().isEmpty()) continue;
-//                    if (!world.getBlockState(mutable.up()).isAir()) {
-//                        if (!world.getBlockState(mutable.up()).isFullCube(world, mutable.up())) continue;
-//                    }
+                    if (world.getBlockState(mutable.up()).isOpaqueFullCube(world, mutable.up())) continue;
 
                     FoamShapeUtil set = FoamShapeUtil.getSpriteSet(world, mutable);
 

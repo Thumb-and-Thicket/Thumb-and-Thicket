@@ -6,8 +6,6 @@
       "state": {
         "Name": "minecraft:lily_pad",
         "Properties": {
-          "damp": "true",
-          "stony": "true",
           "waterlogged": "true"
         }
       }

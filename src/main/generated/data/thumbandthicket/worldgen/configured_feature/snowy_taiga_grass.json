@@ -12,9 +12,7 @@
                 "data": {
                   "Name": "thumbandthicket:snowy_short_grass",
                   "Properties": {
-                    "damp": "true",
-                    "layers": "1",
-                    "stony": "true"
+                    "layers": "1"
                   }
                 },
                 "weight": 1
@@ -23,9 +21,7 @@
                 "data": {
                   "Name": "thumbandthicket:snowy_fern",
                   "Properties": {
-                    "damp": "true",
-                    "layers": "1",
-                    "stony": "true"
+                    "layers": "1"
                   }
                 },
                 "weight": 1

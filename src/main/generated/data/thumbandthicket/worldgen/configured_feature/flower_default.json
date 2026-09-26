@@ -12,10 +12,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "north",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 2
@@ -24,10 +22,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "east",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 2
@@ -36,10 +32,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "south",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 2
@@ -48,10 +42,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "west",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 2
@@ -60,10 +52,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "north",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 1
@@ -72,10 +62,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "east",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 1
@@ -84,10 +72,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "south",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 1
@@ -96,10 +82,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "west",
-                    "flowers": "1",
-                    "stony": "true"
+                    "flowers": "1"
                   }
                 },
                 "weight": 1
@@ -108,10 +92,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "north",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 2
@@ -120,10 +102,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "east",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 2
@@ -132,10 +112,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "south",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 2
@@ -144,10 +122,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "west",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 2
@@ -156,10 +132,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "north",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 1
@@ -168,10 +142,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "east",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 1
@@ -180,10 +152,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "south",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 1
@@ -192,10 +162,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "west",
-                    "flowers": "2",
-                    "stony": "true"
+                    "flowers": "2"
                   }
                 },
                 "weight": 1
@@ -204,10 +172,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "north",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 2
@@ -216,10 +182,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "east",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 2
@@ -228,10 +192,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "south",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 2
@@ -240,10 +202,8 @@
                 "data": {
                   "Name": "minecraft:poppy",
                   "Properties": {
-                    "damp": "true",
                     "facing": "west",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 2
@@ -252,10 +212,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "north",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 1
@@ -264,10 +222,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "east",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 1
@@ -276,10 +232,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "south",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 1
@@ -288,10 +242,8 @@
                 "data": {
                   "Name": "minecraft:dandelion",
                   "Properties": {
-                    "damp": "true",
                     "facing": "west",
-                    "flowers": "3",
-                    "stony": "true"
+                    "flowers": "3"
                   }
                 },
                 "weight": 1

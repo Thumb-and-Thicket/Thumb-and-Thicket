@@ -10,9 +10,7 @@
             "state": {
               "Name": "thumbandthicket:snowy_short_grass",
               "Properties": {
-                "damp": "true",
-                "layers": "1",
-                "stony": "true"
+                "layers": "1"
               }
             }
           }

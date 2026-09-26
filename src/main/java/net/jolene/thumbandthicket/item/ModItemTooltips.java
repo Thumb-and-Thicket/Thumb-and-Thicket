@@ -40,7 +40,7 @@ public class ModItemTooltips {
                     addShift(2, list);
                 }
             }
-             {
+            {
                 if (itemStack.isOf(ModItems.PATINA)) {
                     if (Screen.hasShiftDown()) list.add(1, Text.translatable("tooltip.thumbandthicket.copper_patina"));
                     else addShift(1, list);

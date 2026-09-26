@@ -14,4 +14,8 @@ public class ModTreeDecorators {
     private static <P extends TreeDecorator> TreeDecoratorType<P> register(String name, MapCodec<P> codec) {
         return Registry.register(Registries.TREE_DECORATOR_TYPE, Identifier.of(ThumbAndThicket.MOD_ID, name), new TreeDecoratorType<P>(codec));
     }
+
+    public static void initialize() {
+
+    }
 }

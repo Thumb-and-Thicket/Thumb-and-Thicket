@@ -8,9 +8,7 @@
           "data": {
             "Name": "minecraft:spore_blossom",
             "Properties": {
-              "age": "0",
-              "damp": "true",
-              "stony": "true"
+              "age": "0"
             }
           },
           "weight": 1
@@ -19,9 +17,7 @@
           "data": {
             "Name": "minecraft:spore_blossom",
             "Properties": {
-              "age": "1",
-              "damp": "true",
-              "stony": "true"
+              "age": "1"
             }
           },
           "weight": 1
@@ -30,9 +26,7 @@
           "data": {
             "Name": "minecraft:spore_blossom",
             "Properties": {
-              "age": "2",
-              "damp": "true",
-              "stony": "true"
+              "age": "2"
             }
           },
           "weight": 1

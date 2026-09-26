@@ -17,17 +17,21 @@ import net.jolene.thumbandthicket.util.*;
 import net.jolene.thumbandthicket.world.gen.ModFeatureReplacements;
 import net.jolene.thumbandthicket.world.gen.feature.ModFeatures;
 import net.jolene.thumbandthicket.world.gen.placementmodifier.ModPlacementModifierType;
+import net.jolene.thumbandthicket.world.gen.treedecorator.ModTreeDecorators;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.state.property.Property;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +50,7 @@ public class ThumbAndThicket implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
 		ModBlocks.registerModBlocks();
+        ModBlocks.initialize();
         ModItems.initialize();
         ModBlockEntities.registerModBlockEntities();
         ModFeatures.registerModFeatures();
@@ -55,6 +60,7 @@ public class ThumbAndThicket implements ModInitializer {
         ModCauldronBehavior.registerCauldronBehavior();
         ModLootTableModifications.modifyLootTables();
         ModDataComponentTypes.registerDataComponentTypes();
+        ModTreeDecorators.initialize();
 
         ModPlacementModifierType.SNOWY_BELOW.codec();
         // Mob Attributes
@@ -208,5 +214,17 @@ public class ThumbAndThicket implements ModInitializer {
 
     public static final List<BlockPos> WILTED_CROPS = BlockPos.stream(-1, 0, -1, 1, 1, 1).map(BlockPos::toImmutable).toList();
 
+    public static <T extends Comparable<T>> BlockState thumbandthicket$copyProperty(BlockState newState, BlockState oldState, Property<T> property) {
+        return newState.with(property, oldState.get(property));
+    }
+
+    public static boolean thumbandthicket$touchesWater(World world, BlockPos pos) {
+        for (Direction dir : Direction.values()) {
+            if (world.getFluidState(pos.offset(dir)).isIn(FluidTags.WATER)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
