@@ -147,6 +147,6 @@ public class FoamShapeUtil {
         BlockPos blockPos = pos.offset(dir);
         FluidState fluidState = blockRenderView.getFluidState(blockPos);
 
-        return fluidState.isIn(FluidTags.WATER);
+        return fluidState.isIn(FluidTags.WATER) && fluidState.isStill();
     }
 }
