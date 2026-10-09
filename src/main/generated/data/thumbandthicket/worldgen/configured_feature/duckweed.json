@@ -1,5 +1,5 @@
 {
-  "type": "thumbandthicket:waterlogged_plant_feature",
+  "type": "thumbandthicket:duckweed_plant_feature",
   "config": {
     "state_provider": {
       "type": "minecraft:simple_state_provider",

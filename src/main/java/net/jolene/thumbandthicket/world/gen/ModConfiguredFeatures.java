@@ -3,6 +3,7 @@ package net.jolene.thumbandthicket.world.gen;
 import net.jolene.thumbandthicket.block.ModBlocks;
 import net.jolene.thumbandthicket.util.ModProperties;
 import net.jolene.thumbandthicket.world.gen.feature.ModFeatures;
+import net.jolene.thumbandthicket.world.gen.feature.config.DuckweedFeatureConfig;
 import net.jolene.thumbandthicket.world.gen.feature.config.HangingRootsFeatureConfig;
 import net.jolene.thumbandthicket.world.gen.feature.config.TallWaterloggedPlantFeatureConfig;
 import net.jolene.thumbandthicket.world.gen.feature.config.WaterloggedPlantFeatureConfig;
@@ -119,8 +120,8 @@ public class ModConfiguredFeatures {
         }
         register(context, AGED_SPORE_BLOSSOM_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(sporeBlossomBuilder)));
         register(context, LILY_PAD_KEY, ModFeatures.WATERLOGGED_PLANT_FEATURE, new WaterloggedPlantFeatureConfig(32, 10, 0, BlockStateProvider.of(Blocks.LILY_PAD)));
-        register(context, DUCKWEED_SWAMP, ModFeatures.WATERLOGGED_PLANT_FEATURE, new WaterloggedPlantFeatureConfig(72, 15, 0, BlockStateProvider.of(ModBlocks.DUCKWEED)));
-        register(context, DUCKWEED, ModFeatures.WATERLOGGED_PLANT_FEATURE, new WaterloggedPlantFeatureConfig(32, 10, 0, BlockStateProvider.of(ModBlocks.DUCKWEED)));
+        register(context, DUCKWEED_SWAMP, ModFeatures.DUCKWEED_PLANT_FEATURE, new DuckweedFeatureConfig(72, 15, 0, BlockStateProvider.of(ModBlocks.DUCKWEED)));
+        register(context, DUCKWEED, ModFeatures.DUCKWEED_PLANT_FEATURE, new DuckweedFeatureConfig(32, 10, 0, BlockStateProvider.of(ModBlocks.DUCKWEED)));
 
         register(context, ROOTED_GRASS_KEY, Feature.DISK, new DiskFeatureConfig(new PredicatedStateProvider(BlockStateProvider.of(Blocks.ROOTED_DIRT), List.of(new PredicatedStateProvider.Rule(BlockPredicate.not(BlockPredicate.anyOf(BlockPredicate.solid(Direction.UP.getVector()), BlockPredicate.matchingFluids(Direction.UP.getVector(), Fluids.WATER), BlockPredicate.IS_AIR, BlockPredicate.matchingBlocks(Blocks.PODZOL))), BlockStateProvider.of(ModBlocks.ROOTED_GRASS)), new PredicatedStateProvider.Rule(BlockPredicate.allOf(BlockPredicate.not(BlockPredicate.anyOf(BlockPredicate.solid(Direction.UP.getVector()), BlockPredicate.matchingFluids(Direction.UP.getVector(), Fluids.WATER), BlockPredicate.IS_AIR)), BlockPredicate.matchingBlocks(Blocks.PODZOL)), BlockStateProvider.of(ModBlocks.ROOTED_PODZOL)), new PredicatedStateProvider.Rule(BlockPredicate.allOf(BlockPredicate.solid(Direction.UP.getVector()), BlockPredicate.not(BlockPredicate.IS_AIR), BlockPredicate.matchingBlockTag(BlockTags.DIRT)), BlockStateProvider.of(Blocks.ROOTED_DIRT)), new PredicatedStateProvider.Rule(BlockPredicate.allOf(BlockPredicate.solid(Direction.UP.getVector()), BlockPredicate.IS_AIR), BlockStateProvider.of(Blocks.HANGING_ROOTS)))), BlockPredicate.allOf(BlockPredicate.matchingBlockTag(BlockTags.DIRT)), UniformIntProvider.create(2, 4), 2));
     }

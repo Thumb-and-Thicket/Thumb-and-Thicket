@@ -14,14 +14,10 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
-import java.util.List;
-
 public class WallMushroomDecorator extends TreeDecorator {
-
     public static final MapCodec<WallMushroomDecorator> CODEC = RecordCodecBuilder.mapCodec(wallMushroomDecoratorInstance -> wallMushroomDecoratorInstance.group(Codec.FLOAT.fieldOf("probability").forGetter(mod -> mod.probability), BlockStateProvider.TYPE_CODEC.fieldOf("state_provider").forGetter(mod -> mod.stateProvider)).apply(wallMushroomDecoratorInstance, WallMushroomDecorator::new));
     private final float probability;
     private final BlockStateProvider stateProvider;
-
 
     public WallMushroomDecorator (float probability, BlockStateProvider stateProvider) {
         this.probability = probability;

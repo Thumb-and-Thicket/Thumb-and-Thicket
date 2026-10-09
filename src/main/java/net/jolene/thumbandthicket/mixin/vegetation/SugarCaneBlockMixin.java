@@ -41,6 +41,6 @@ public class SugarCaneBlockMixin {
     private boolean thumbandthicket$preferWetSand(BlockState state, WorldView world, BlockPos pos, Operation<Boolean> original) {
         BlockState blockState = world.getBlockState(pos.down());
         if (blockState.getBlock() instanceof Soakable soakable) return soakable.getSoakingLevel() == Soakable.WetnessLevel.WET;
-        return blockState.isOf(Blocks.SUGAR_CANE) || blockState.isOf(Blocks.MUD);
+        return (blockState.isOf(Blocks.SUGAR_CANE) || blockState.isOf(Blocks.MUD)) && world.getFluidState(pos).isEmpty();
     }
 }

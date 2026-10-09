@@ -90,7 +90,7 @@ public abstract class MushroomPlantBlockMixin extends Block {
             BlockPos pos1 = pos.down();
             return world.getBlockState(pos1).isFullCube(world, pos1) && (world.getBaseLightLevel(pos1, 0) < 13 || world.getBlockState(pos1).isIn(BlockTags.MUSHROOM_GROW_BLOCK));
         }
-        return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite()) && (world.getBaseLightLevel(pos, 0) < 13 || world.getBlockState(blockPos).isIn(BlockTags.MUSHROOM_GROW_BLOCK));
+        return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite());
     }
 
     @Unique

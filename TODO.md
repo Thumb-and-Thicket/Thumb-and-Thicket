@@ -219,7 +219,7 @@
   - Textures
 - Eggs
   - ~~Chicken~~ and Parrots lay Eggs as Blocks
-  - Blocks
+  - ~~Blocks~~
   - Textures
 - More Fish
 - Big Clam
@@ -304,9 +304,12 @@
   - ~~Worldgen~~
   - Textures
 - Wet Sand
-  - Blockstate Logic
-  - Worldgen
+  - ~~Blockstate Logic~~
+  - ~~Worldgen~~
   - Textures
+    - ~~Normal Sand~~
+    - Red Sand
+    - Sus sand
 - Water Caustics and edge Foam
   - ~~Rendering~~
   - ~~Textures~~
@@ -322,7 +325,7 @@
     - Hot Caves/Sand Caves
       - Cave
       - Worldgen
-    - Cold Caves
+    - ~~Cold Caves~~
       - Cave
       - Worldgen
     - Mushroom Caves

@@ -16,6 +16,5 @@ public class ModTreeDecorators {
     }
 
     public static void initialize() {
-
     }
 }
