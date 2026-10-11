@@ -67,6 +67,9 @@ public class ModFeatureReplacements {
         removeFeature(VegetationPlacedFeatures.FLOWER_WARM, ModPlacedFeatures.FLOWER_WARM, GenerationStep.Feature.VEGETAL_DECORATION);
         removeFeature(VegetationPlacedFeatures.DARK_FOREST_VEGETATION, ModPlacedFeatures.DARK_FOREST_VEGETATION, GenerationStep.Feature.VEGETAL_DECORATION);
         removeFeature(VegetationPlacedFeatures.PATCH_WATERLILY, ModPlacedFeatures.LILY_PAD, GenerationStep.Feature.VEGETAL_DECORATION);
+        removeFeature(VegetationPlacedFeatures.PATCH_MELON, ModPlacedFeatures.MELON_PATCH, GenerationStep.Feature.VEGETAL_DECORATION);
+        removeFeature(VegetationPlacedFeatures.PATCH_MELON_SPARSE, ModPlacedFeatures.MELON_PATCH_SPARSE, GenerationStep.Feature.VEGETAL_DECORATION);
+        removeFeature(VegetationPlacedFeatures.PATCH_PUMPKIN, ModPlacedFeatures.PUMPKIN_PATCH, GenerationStep.Feature.VEGETAL_DECORATION);
     }
 
     public static void addFeatures() {

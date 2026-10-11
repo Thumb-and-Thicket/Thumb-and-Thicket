@@ -2,6 +2,7 @@ package net.jolene.thumbandthicket.mixin.tree;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.jolene.thumbandthicket.block.LogBlock;
 import net.jolene.thumbandthicket.block.ModBlocks;
 import net.jolene.thumbandthicket.util.ModProperties;
 import net.jolene.thumbandthicket.util.Rooty;
@@ -32,7 +33,7 @@ public class GiantTrunkPlacerMixin {
 
         BlockState state = config.trunkProvider.get(random, tmpPos);
 
-        if (state != null) {
+        if (state != null && state.getBlock() instanceof LogBlock) {
             BlockState newState = state;
             WorldAccess worldAccess = (WorldAccess) world;
 

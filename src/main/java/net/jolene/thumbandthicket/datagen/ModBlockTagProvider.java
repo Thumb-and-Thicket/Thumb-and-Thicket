@@ -20,7 +20,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ModBlockTags.ROOTY_BLOCKS).add(Blocks.ROOTED_DIRT, ModBlocks.ROOT_BLOCK, ModBlocks.ROOTED_GRASS);
-        getOrCreateTagBuilder(ModBlockTags.STACKABLE_MUSHROOMS).add(Blocks.RED_MUSHROOM, Blocks.BROWN_MUSHROOM, ModBlocks.PURPLE_MUSHROOM);
         getOrCreateTagBuilder(ModBlockTags.SNIPPABLE).add(Blocks.VINE, Blocks.SUGAR_CANE, Blocks.CACTUS);
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(ModBlocks.SNOWY_SHORT_GRASS)

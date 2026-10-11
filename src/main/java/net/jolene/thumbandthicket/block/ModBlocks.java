@@ -77,7 +77,7 @@ public class ModBlocks {
     public static final Block BEACH_GRASS = register(new TallPlantBlock(AbstractBlock.Settings.copy(Blocks.LARGE_FERN)), "beach_grass", true);
 
     public static final Block MYCELIAL_SPROUTS = register(new SproutsBlock(AbstractBlock.Settings.create().noCollision().nonOpaque().sounds(BlockSoundGroup.FUNGUS).replaceable().mapColor(MapColor.MAGENTA).pistonBehavior(PistonBehavior.DESTROY).breakInstantly().offset(AbstractBlock.OffsetType.XZ)), "mycelial_sprouts", true);
-    public static final Block PURPLE_MUSHROOM = register(new MushroomPlantBlock(ModConfiguredFeatures.HUGE_PURPLE_MUSHROOM_KEY, AbstractBlock.Settings.copy(Blocks.RED_MUSHROOM)), "purple_mushroom", true);
+    public static final Block PURPLE_MUSHROOM = register(new ClusterMushroomPlantBlock(ModConfiguredFeatures.HUGE_PURPLE_MUSHROOM_KEY, AbstractBlock.Settings.copy(Blocks.RED_MUSHROOM)), "purple_mushroom", true);
     public static final Block PURPLE_MUSHROOM_BLOCK = register(new MushroomBlock(AbstractBlock.Settings.copy(Blocks.RED_MUSHROOM_BLOCK)), "purple_mushroom_block", true);
 
     public static final Block WILTED_CROP = register(new WiltedCropBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.CROP).noCollision().replaceable()), "wilted_crop", false);

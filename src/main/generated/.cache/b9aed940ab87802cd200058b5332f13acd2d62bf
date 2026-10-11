@@ -1,10 +1,9 @@
-// 1.21.1	2026-10-08T19:03:17.473247	Thumb & Thicket/Tags for minecraft:block
+// 1.21.1	2026-10-11T17:11:56.637802	Thumb & Thicket/Tags for minecraft:block
 42e69f48aa0663d4961bad8a25a4418df1741dc6 data/thumbandthicket/tags/block/cracked_blocks.json
-57f63eb56238e0ea044d6aa324a406ab73c90dcb data/minecraft/tags/block/mineable/pickaxe.json
 20a079a05271a019877569935d9a8f0a7e0ffb8f data/thumbandthicket/tags/block/snippable.json
+57f63eb56238e0ea044d6aa324a406ab73c90dcb data/minecraft/tags/block/mineable/pickaxe.json
 9c99444249ea9362072a08ee44c2d01c8ab03176 data/thumbandthicket/tags/block/tall_crops.json
 bc81d1d343dddb9c4dfdcef18fead5061e0a92c3 data/thumbandthicket/tags/block/crackable_blocks.json
-b084906d971d38651e77cafe6444d605d7d6f37b data/thumbandthicket/tags/block/stackable_mushrooms.json
 41e9f3696133c23fb30ba107e8590915e04fe3e0 data/minecraft/tags/block/dirt.json
 c1ed954b8a8d940498f933be12a111c97fbacfc2 data/thumbandthicket/tags/block/chiselable_blocks.json
 9c641bdb95ac984608a074f008c736b0da5b0af7 data/thumbandthicket/tags/block/mossy_blocks.json

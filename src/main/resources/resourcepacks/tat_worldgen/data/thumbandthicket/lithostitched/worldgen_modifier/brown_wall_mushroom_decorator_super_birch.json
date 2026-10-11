@@ -1,0 +1,25 @@
+{
+  "type": "lithostitched:set_tree_decorators",
+  "features": [
+    "super_birch_bees",
+    "super_birch_bees_0002",
+    "fallen_super_birch_tree"
+  ],
+  "decorators": [
+    {
+      "type": "thumbandthicket:wall_mushroom_decorator",
+      "probability": 0.5,
+      "state_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:brown_mushroom",
+          "Properties": {
+            "facing": "north",
+            "face": "wall",
+            "amount": 1
+          }
+        }
+      }
+    }
+  ]
+}

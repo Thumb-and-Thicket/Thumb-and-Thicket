@@ -35,7 +35,7 @@ public class SnowPlacementModifier extends PlacementModifier {
             }
             return Stream.of(pos);
         }
-        if (!shouldBeSnowy && !context.getWorld().getBiome(pos).value().canSetSnow(context.getWorld(), pos)) {
+        if (!shouldBeSnowy && !context.getWorld().getBiome(pos).value().canSetSnow(context.getWorld(), pos) && !context.getWorld().getBiome(pos).value().canSetIce(context.getWorld(), pos)) {
             return Stream.of(pos);
         }
 

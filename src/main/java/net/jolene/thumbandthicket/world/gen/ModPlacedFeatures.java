@@ -69,6 +69,10 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> ROOTED_GRASS = registerKey("rooted_grass_placed");
     public static final RegistryKey<PlacedFeature> HANGING_ROOTS = registerKey("hanging_roots_placed");
 
+    public static final RegistryKey<PlacedFeature> PUMPKIN_PATCH = registerKey("pumpkin_placed");
+    public static final RegistryKey<PlacedFeature> MELON_PATCH = registerKey("melon_placed");
+    public static final RegistryKey<PlacedFeature> MELON_PATCH_SPARSE = registerKey("melon_sparse_placed");
+
     public static final RegistryKey<PlacedFeature> CAVE_PARSNIPS = registerKey("cave_parsnips_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
@@ -117,6 +121,10 @@ public class ModPlacedFeatures {
 
         register(context, MYCELIAL_SPROUTS, configuredFeatures.getOrThrow(ModConfiguredFeatures.MYCELIAL_SPROUTS_KEY), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, HUGE_PURPLE_MUSHROOM_PLACED, configuredFeatures.getOrThrow(ModConfiguredFeatures.HUGE_PURPLE_MUSHROOM_KEY));
+
+        register(context, PUMPKIN_PATCH, configuredFeatures.getOrThrow(ModConfiguredFeatures.PUMPKIN_KEY), new PlacementModifier[]{RarityFilterPlacementModifier.of(300), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
+        register(context, MELON_PATCH, configuredFeatures.getOrThrow(ModConfiguredFeatures.MELON_KEY), new PlacementModifier[]{RarityFilterPlacementModifier.of(6), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
+        register(context, MELON_PATCH_SPARSE, configuredFeatures.getOrThrow(ModConfiguredFeatures.MELON_KEY), new PlacementModifier[]{RarityFilterPlacementModifier.of(64), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()});
 
         register(context, FLOWER_WARM, configuredFeatures.getOrThrow(ModConfiguredFeatures.FLOWER_DEFAULT_KEY), RarityFilterPlacementModifier.of(16), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, FLOWER_DEFAULT, configuredFeatures.getOrThrow(ModConfiguredFeatures.FLOWER_DEFAULT_KEY), RarityFilterPlacementModifier.of(32), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());PlacedFeatures.register(context, FLOWER_FLOWER_FOREST_2, configuredFeatures.getOrThrow(ModConfiguredFeatures.FLOWER_FLOWER_FOREST_2_KEY), CountPlacementModifier.of(3), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());

@@ -9,7 +9,7 @@
   - Saplings
   - ~~Logs~~
   - Leaves + lighter Leaves
-  - Melons :skull emoji:
+  - ~~Melons :skull emoji:~~
 
 - Lupine
   - 4 Random Colors (Textures)
@@ -61,7 +61,7 @@
   - ~~Worldgen~~
     - ~~Overworld~~
     - ~~Nether~~
-  - Tree Decorators
+  - ~~Tree Decorators~~
   - ~~Loot Table~~
   - Textures
 - Lavender
@@ -82,10 +82,10 @@
   - ~~Block~~
   - ~~Big Block~~
   - ~~Configured Feature~~
-  - Worldgen
+  - ~~Worldgen~~
   - Textures
 - Pale Gourd
-  - Block
+  - ~~Block~~
   - ~~Gourd 0' Lanterns~~
   - Worldgen
   - Textures

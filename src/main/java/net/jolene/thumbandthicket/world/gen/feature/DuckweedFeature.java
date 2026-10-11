@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.jolene.thumbandthicket.world.gen.feature.config.DuckweedFeatureConfig;
 import net.jolene.thumbandthicket.world.gen.feature.config.WaterloggedPlantFeatureConfig;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -45,6 +46,7 @@ public class DuckweedFeature extends Feature<DuckweedFeatureConfig> {
                 pos = pos.down();
 
                 if (!world.getBlockState(pos).getFluidState().isOf(Fluids.WATER) && !world.getBlockState(pos.up()).isAir()) continue;
+                if (world.getBlockState(pos).isOf(Blocks.ICE)) continue;
 
                 boolean waterNearby = false;
                 for (BlockPos currentPos : BlockPos.iterate(pos.add(ySpread, 0, ySpread), pos.add(-ySpread, -0, -ySpread))) if (BlockPredicate.matchingFluids(Fluids.WATER).test(world, currentPos)) waterNearby = true;

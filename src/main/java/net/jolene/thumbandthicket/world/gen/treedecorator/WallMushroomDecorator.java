@@ -38,7 +38,7 @@ public class WallMushroomDecorator extends TreeDecorator {
                 BlockPos targetPos = pos.offset(direction);
                 if (generator.isAir(targetPos)) {
                     int amount = random.nextBetween(1, 4);
-                    BlockState state = stateProvider.get(random, targetPos).with(ModProperties.AMOUNT, amount).with(Properties.FACING, direction.getOpposite()).with(Properties.BLOCK_FACE, BlockFace.WALL);
+                    BlockState state = stateProvider.get(random, targetPos).with(ModProperties.AMOUNT, amount).with(Properties.FACING, direction).with(Properties.BLOCK_FACE, BlockFace.WALL);
                     generator.replace(targetPos, state);
                 }
             }

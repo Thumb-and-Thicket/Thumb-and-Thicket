@@ -1,11 +1,9 @@
-package net.jolene.thumbandthicket.mixin.vegetation;
+package net.jolene.thumbandthicket.block;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import net.jolene.thumbandthicket.block.ModBlockTags;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockFace;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -18,9 +16,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.function.BiFunction;
@@ -29,14 +25,11 @@ import static net.jolene.thumbandthicket.util.ModProperties.AMOUNT;
 import static net.minecraft.state.property.Properties.BLOCK_FACE;
 import static net.minecraft.state.property.Properties.FACING;
 
-@Mixin(FungusBlock.class)
-public class FungusBlockMixin extends Block {
-    @Shadow
-    @Final
-    protected static VoxelShape SHAPE;
+public class ClusterMushroomPlantBlock extends MushroomPlantBlock implements Fertilizable {
 
-    public FungusBlockMixin(Settings settings) {
-        super(settings);
+    public ClusterMushroomPlantBlock(RegistryKey<ConfiguredFeature<?, ?>> featureKey, Settings settings) {
+        super(featureKey, settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(BLOCK_FACE, BlockFace.FLOOR).with(AMOUNT, 1));
     }
 
     @Unique
@@ -50,7 +43,6 @@ public class FungusBlockMixin extends Block {
         VoxelShape voxelShape = VoxelShapes.empty();
         VoxelShape[] voxelShapes = new VoxelShape[]{voxelShape};
         Direction facing = state.get(FACING);
-        if (state.isIn(ModBlockTags.STACKABLE_MUSHROOMS)) {
             switch (state.get(BLOCK_FACE)) {
                 case FLOOR -> voxelShapes = voxelShapesFloor;
                 case WALL -> {
@@ -67,14 +59,11 @@ public class FungusBlockMixin extends Block {
                 int j = Math.floorMod(i - facing.getHorizontal(), 4);
                 voxelShape = VoxelShapes.union(voxelShape, voxelShapes[j]);
             }
-        } else {
-            voxelShape = SHAPE;
-        }
         return voxelShape;
     });
 
-    @WrapMethod(method = "getOutlineShape")
-    private VoxelShape thumbandthicket$getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context, Operation<VoxelShape> original) {
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return FACING_AND_AMOUNT_TO_SHAPE.apply(state, state.get(AMOUNT));
     }
 
@@ -83,12 +72,9 @@ public class FungusBlockMixin extends Block {
 
         Direction direction = thumbandthicket$getDirection(state).getOpposite();
         BlockPos blockPos = pos.offset(direction);
-
-        if (!state.isIn(ModBlockTags.STACKABLE_MUSHROOMS)) {
-            BlockPos pos1 = pos.down();
-            return world.getBlockState(pos1).isFullCube(world, pos1) && (world.getBaseLightLevel(pos1, 0) < 13 || world.getBlockState(pos1).isIn(BlockTags.MUSHROOM_GROW_BLOCK));
-        }
-        return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite()) && (world.getBaseLightLevel(pos, 0) < 13 || world.getBlockState(blockPos).isIn(BlockTags.MUSHROOM_GROW_BLOCK));
+        BlockPos pos1 = pos.down();
+        if (direction == Direction.DOWN) return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite()) && world.getBlockState(pos1).isIn(BlockTags.MUSHROOM_GROW_BLOCK);
+        return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite());
     }
 
     @Unique
@@ -100,14 +86,8 @@ public class FungusBlockMixin extends Block {
         };
     }
 
-    @WrapMethod(method = "grow")
-    private void thumbandthicket$growIfFloor(ServerWorld world, Random random, BlockPos pos, BlockState state, Operation<Void> original) {
-        if (state.get(BLOCK_FACE) == BlockFace.FLOOR) original.call(world, random, pos, state);
-    }
-
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        if (!state.isIn(ModBlockTags.STACKABLE_MUSHROOMS)) return false;
         if (!context.shouldCancelInteraction() && context.getStack().isOf(this.asItem()) && state.get(AMOUNT) < 4) return true;
         return super.canReplace(state, context);
     }
@@ -116,9 +96,6 @@ public class FungusBlockMixin extends Block {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Block block = this;
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
-        if (!block.getDefaultState().isIn(ModBlockTags.STACKABLE_MUSHROOMS)) {
-            return block.getDefaultState();
-        }
         if (blockState.isOf(this)) {
             return blockState.with(AMOUNT, Math.min(4, blockState.get(AMOUNT) + 1));
         }
@@ -142,5 +119,10 @@ public class FungusBlockMixin extends Block {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(BLOCK_FACE).add(FACING).add(AMOUNT);
+    }
+
+    @Override
+    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+        if (state.get(BLOCK_FACE) == BlockFace.FLOOR) trySpawningBigMushroom(world, pos, state, random);
     }
 }

@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.jolene.thumbandthicket.block.LogBlock;
 import net.jolene.thumbandthicket.block.ModBlocks;
 import net.jolene.thumbandthicket.util.Rooty;
 import net.minecraft.block.Block;
@@ -40,28 +41,23 @@ public class TrunkPlacerMixin {
     private void modifyPlacedState(BiConsumer instance, Object posObj, Object stateObj, Operation<Void> original, @Local(ordinal = 0, argsOnly = true) TestableWorld world) {
         BlockPos pos = (BlockPos) posObj;
         BlockState state = (BlockState) stateObj;
-
         BlockState newState = state;
 
-
         if (!((TrunkPlacer) (Object) this instanceof DarkOakTrunkPlacer)) {
-            if (state.contains(ROOTY) && state.contains(SLICE)) {
+            if (state.getBlock() instanceof LogBlock) {
                 WorldAccess worldAccess = (WorldAccess) world;
 
                 newState = thumbandthicket$determineRootSide(newState, worldAccess, pos);
                 int random = Random.create().nextBetween(1,5);
 
-                if (newState.get(ROOTY) != Rooty.NONE) {
-                    newState = thumbandthicket$calculateSlice(newState, worldAccess, pos);
-                } else {
+                if (newState.get(ROOTY) != Rooty.NONE) newState = thumbandthicket$calculateSlice(newState, worldAccess, pos);
+                else {
                     newState = newState.with(BRANCH, random == 1);
                     if (!newState.get(BRANCH)) newState = newState.with(HOLLOW, random == 5);
                 }
-
                 newState = thumbandthicket$inheritSlice(newState, worldAccess, pos);
             }
         }
-
         original.call(instance, pos, newState);
     }
 }

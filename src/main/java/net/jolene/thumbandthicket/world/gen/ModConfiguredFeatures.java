@@ -60,6 +60,9 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ROOTED_GRASS_KEY = registerKey("rooted_grass");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ROOTS_KEY = registerKey("hanging_roots");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PUMPKIN_KEY = registerKey("pumpkin");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MELON_KEY = registerKey("melon");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> CAVE_PARSNIPS_KEY = registerKey("cave_parsnips");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> AGED_SPORE_BLOSSOM_KEY = registerKey("spore_blossom");
@@ -106,6 +109,9 @@ public class ModConfiguredFeatures {
         register(context, CAVE_PARSNIPS_KEY, Feature.RANDOM_PATCH, new RandomPatchFeatureConfig(72, 15, 10, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CAVE_PARSNIP_CROP.getDefaultState().with(Properties.AGE_7, 7))))));
         register(context, ROOTS_KEY, ModFeatures.HANGING_ROOTS_FEATURE, new HangingRootsFeatureConfig(15, 7, 10, BlockStateProvider.of(Blocks.HANGING_ROOTS)));
 
+        register(context, PUMPKIN_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(gourdBuilder(Blocks.PUMPKIN))), List.of(Blocks.GRASS_BLOCK)));
+        register(context, MELON_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(gourdBuilder(Blocks.MELON))), List.of(Blocks.GRASS_BLOCK)));
+
         register(context, FLOWER_DEFAULT_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(64, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(flowerBuilder(Blocks.POPPY,2,Blocks.DANDELION,1))))));
         register(context, FLOWER_SWAMP_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(64, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(flowerBuilder(Blocks.BLUE_ORCHID,1,null,0))))));
         register(context, FLOWER_FLOWER_FOREST_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L, new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0), 0.020833334f, List.of(Blocks.DANDELION.getDefaultState(), Blocks.POPPY.getDefaultState(), Blocks.ALLIUM.getDefaultState(), Blocks.AZURE_BLUET.getDefaultState(), Blocks.RED_TULIP.getDefaultState(), Blocks.ORANGE_TULIP.getDefaultState(), Blocks.WHITE_TULIP.getDefaultState(), Blocks.PINK_TULIP.getDefaultState(), Blocks.OXEYE_DAISY.getDefaultState(), Blocks.CORNFLOWER.getDefaultState(), Blocks.LILY_OF_THE_VALLEY.getDefaultState(), ModBlocks.SHORT_LILAC.getDefaultState()))))));
@@ -142,6 +148,14 @@ public class ModConfiguredFeatures {
             }
         }
         return mushroomBuilder;
+    }
+
+    private static DataPool.Builder<BlockState> gourdBuilder(Block block) {
+        DataPool.Builder<BlockState> gourdBuilder = DataPool.builder();
+        for (Direction direction : Direction.values()) {
+            gourdBuilder.add(block.getDefaultState().with(Properties.FACING, direction), 1);
+        }
+        return gourdBuilder;
     }
 
     private static DataPool.Builder<BlockState> treeMushroomBuilder(Block block) {
