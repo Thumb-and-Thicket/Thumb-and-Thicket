@@ -104,6 +104,7 @@ public class ModBlocks {
     public static final Block ROOTED_GRASS = register(new RootedGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.HANGING_ROOTS).ticksRandomly().requiresTool()), "rooted_grass", true);
     public static final Block ROOTED_PODZOL = register(new RootedPodzolBlock(AbstractBlock.Settings.copy(Blocks.PODZOL).sounds(BlockSoundGroup.HANGING_ROOTS).requiresTool()), "rooted_podzol", true);
     public static final Block PERMAFROST = register(new Block(AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK).mapColor(MapColor.BROWN).requiresTool().strength(2.0F, 3.0F)), "permafrost", true);
+
     public static final Block MUDDY_GRASS = register(new Block(AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK).mapColor(MapColor.BROWN).requiresTool()), "muddy_grass", true);
 
     public static final Block BRINE_BLOCK = register(new FluidBlock(ModFluids.BRINE_SOURCE, AbstractBlock.Settings.create().mapColor(MapColor.TEAL).noCollision().nonOpaque().replaceable()), "brine_block", true);

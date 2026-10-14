@@ -41,6 +41,8 @@ public class ModItems {
     public static final Item CHERRY = register(new Item(new Item.Settings().maxCount(64).food(CHERRY_FOOD_COMPONENT).recipeRemainder(Items.CHERRY_SAPLING)), "cherry");
     public static final Item PRICKLY_PEAR = register(new Item(new Item.Settings().maxCount(64).food(PRICKLY_PEAR_FOOD_COMPONENT)), "prickly_pear");
 
+    public static final Item CATTAIL_FLUFF = register(new Item(new Item.Settings().maxCount(64)), "cattail_seed_down");
+
     public static final Item RAW_VENISON = register(new Item(new Item.Settings().maxCount(64).food(RAW_VENISON_FOOD_COMPONENT)), "raw_venison");
     public static final Item COOKED_VENISON = register(new Item(new Item.Settings().maxCount(64).food(COOKED_VENISON_COMPONENT)), "cooked_venison");
 

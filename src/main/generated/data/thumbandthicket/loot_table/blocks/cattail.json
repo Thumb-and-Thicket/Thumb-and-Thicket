@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -17,13 +17,16 @@
                   }
                 }
               ],
-              "name": "thumbandthicket:algae"
+              "name": "thumbandthicket:cattail"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "thumbandthicket:cattail_seed_down"
             }
           ]
         }
       ],
-      "rolls": 1
+      "rolls": 1.0
     }
-  ],
-  "random_sequence": "minecraft:blocks/short_grass"
+  ]
 }

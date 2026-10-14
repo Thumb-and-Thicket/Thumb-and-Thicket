@@ -89,7 +89,8 @@ public class ClamSlabBlock extends BlockWithEntity implements Waterloggable {
                 }
                 if (player.isSneaking()) {
                     ItemStack clamSlabBlockEntityStack = clamSlabBlockEntity.getStack(0);
-                    player.getInventory().offerOrDrop(clamSlabBlockEntityStack);
+                    if (player.getInventory().getMainHandStack().isEmpty()) player.getInventory().insertStack(player.getInventory().selectedSlot, clamSlabBlockEntityStack);
+                    else player.getInventory().offerOrDrop(clamSlabBlockEntityStack);
                     world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
                     clamSlabBlockEntity.clear();
 

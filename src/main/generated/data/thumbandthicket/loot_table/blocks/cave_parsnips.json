@@ -10,8 +10,26 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "thumbandthicket:cave_parsnips"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "thumbandthicket:cave_parsnips",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ],
+              "name": "thumbandthicket:cave_parsnip"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:air"
+            }
+          ]
         }
       ],
       "rolls": 1.0
@@ -41,11 +59,10 @@
               }
             }
           ],
-          "name": "thumbandthicket:cave_parsnips"
+          "name": "minecraft:air"
         }
       ],
       "rolls": 1.0
     }
-  ],
-  "random_sequence": "thumbandthicket:blocks/cave_parsnips"
+  ]
 }

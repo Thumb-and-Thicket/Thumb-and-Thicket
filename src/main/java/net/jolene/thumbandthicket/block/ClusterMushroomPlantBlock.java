@@ -17,7 +17,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.util.function.BiFunction;
 
@@ -32,7 +31,6 @@ public class ClusterMushroomPlantBlock extends MushroomPlantBlock implements Fer
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(BLOCK_FACE, BlockFace.FLOOR).with(AMOUNT, 1));
     }
 
-    @Unique
     private static final BiFunction<BlockState, Integer, VoxelShape> FACING_AND_AMOUNT_TO_SHAPE = Util.memoize((state, amount) -> {
         VoxelShape[] voxelShapesFloor = new VoxelShape[]{Block.createCuboidShape(8.0, 0.0, 8.0, 16.0, 9.0, 16.0), Block.createCuboidShape(8.0, 0.0, 0.0, 16.0, 9.0, 8.0), Block.createCuboidShape(0.0, 0.0, 0.0, 8.0, 9.0, 8.0), Block.createCuboidShape(0.0, 0.0, 8.0, 8.0, 9.0, 16.0)};
         VoxelShape[] voxelShapesWallSouth = new VoxelShape[]{Block.createCuboidShape(8, 8, 0, 16, 16, 3), Block.createCuboidShape(8, 0, 0, 16, 8, 3), Block.createCuboidShape(0, 0, 0, 8, 8, 3), Block.createCuboidShape(0, 8, 0, 8, 16, 3)};
@@ -77,7 +75,6 @@ public class ClusterMushroomPlantBlock extends MushroomPlantBlock implements Fer
         return world.getBlockState(blockPos).isSideSolidFullSquare(world, blockPos, direction.getOpposite());
     }
 
-    @Unique
     private static Direction thumbandthicket$getDirection(BlockState state) {
         return switch (state.get(BLOCK_FACE)) {
             case CEILING -> Direction.DOWN;

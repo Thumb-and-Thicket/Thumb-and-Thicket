@@ -47,7 +47,13 @@ public class ModItemGroups {
                             entries.add(Blocks.LILY_PAD);
                             entries.add(ModBlocks.DUCKWEED);
                             entries.add(ModBlocks.ALGAE);
+
+                            entries.add(ModBlocks.DAMP_SAND);
                             entries.add(ModBlocks.WET_SAND);
+                            entries.add(ModBlocks.DAMP_SUSPICIOUS_SAND);
+                            entries.add(ModBlocks.WET_SUSPICIOUS_SAND);
+                            entries.add(ModBlocks.DAMP_RED_SAND);
+                            entries.add(ModBlocks.WET_RED_SAND);
 
                             entries.add(ModBlocks.ROOTED_GRASS);
                             entries.add(ModBlocks.ROOTED_PODZOL);
@@ -58,6 +64,7 @@ public class ModItemGroups {
                             //entries.add(ModItems.FERTILIZER);
                             //entries.add(ModItems.SUNFLOWER_SEEDS);
                             entries.add(ModItems.FLOWER_SEEDS);
+                            entries.add(ModItems.DEW_DROP_SAPLING);
 
                             entries.add(Items.APPLE);
                             entries.add(Items.GOLDEN_APPLE);
@@ -99,14 +106,17 @@ public class ModItemGroups {
                             entries.add(ModItems.BEAVER_SPAWN_EGG);
                             entries.add(ModItems.BROWN_BEAR_SPAWN_EGG);
                             entries.add(ModItems.MOOSE_SPAWN_EGG);
+
+                            entries.add(ModItems.PATINA);
+                            entries.add(ModItems.FUR);
+                            entries.add(ModItems.CATTAIL_FLUFF);
+
                             entries.add(ModItems.RAW_VENISON);
                             entries.add(ModItems.COOKED_VENISON);
-                            entries.add(ModItems.FUR);
+
                             entries.add(Items.SHEARS);
                             entries.add(ModItems.WAXED_BRUSH);
                             entries.add(ModItems.CHISEL);
-                            entries.add(ModItems.PATINA);
-
                             entries.add(ModItems.DEW_BOTTLE);
                             entries.add(ModItems.BRINE_BUCKET);
 
