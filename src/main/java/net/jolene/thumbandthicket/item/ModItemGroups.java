@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.jolene.thumbandthicket.ThumbAndThicket;
 import net.jolene.thumbandthicket.block.ModBlocks;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -30,7 +29,7 @@ public class ModItemGroups {
                             entries.add(Items.DARK_OAK_SAPLING);
                             entries.add(Items.MANGROVE_PROPAGULE);
                             entries.add(Items.CHERRY_SAPLING);
-                            entries.add(com.blackgear.vanillabackport.common.registries.ModBlocks.PALE_OAK_SAPLING.get());
+                            entries.add(com.blackgear.vanillabackport.common.registries.blocks.ModBlocks.PALE_OAK_SAPLING.get());
                             entries.add(ModItems.BARK);
                             entries.add(ModItems.LEAF_LITTER);
                             entries.add(ModBlocks.CLOVERS);

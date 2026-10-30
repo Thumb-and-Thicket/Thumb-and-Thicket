@@ -48,6 +48,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> LILY_PAD_KEY = registerKey("lily_pad");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DUCKWEED_SWAMP = registerKey("duckweed_swamp");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DUCKWEED = registerKey("duckweed");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LEAF_LITTER_KEY = registerKey("leaf_litter");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> RED_MUSHROOM_NORMAL_KEY = registerKey("red_mushroom_normal");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BROWN_MUSHROOM_NORMAL_KEY = registerKey("brown_mushroom_normal");
@@ -126,6 +127,9 @@ public class ModConfiguredFeatures {
         }
         register(context, AGED_SPORE_BLOSSOM_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(sporeBlossomBuilder)));
         register(context, LILY_PAD_KEY, ModFeatures.WATERLOGGED_PLANT_FEATURE, new WaterloggedPlantFeatureConfig(32, 10, 0, BlockStateProvider.of(Blocks.LILY_PAD)));
+
+        register(context, LEAF_LITTER_KEY, ModFeatures.WATERLOGGED_PLANT_FEATURE, new WaterloggedPlantFeatureConfig(32, 20, 0, BlockStateProvider.of(com.blackgear.vanillabackport.common.registries.blocks.ModBlocks.LEAF_LITTER.get())));
+
         register(context, DUCKWEED_SWAMP, ModFeatures.DUCKWEED_PLANT_FEATURE, new DuckweedFeatureConfig(72, 15, 0, BlockStateProvider.of(ModBlocks.DUCKWEED)));
         register(context, DUCKWEED, ModFeatures.DUCKWEED_PLANT_FEATURE, new DuckweedFeatureConfig(32, 10, 0, BlockStateProvider.of(ModBlocks.DUCKWEED)));
 

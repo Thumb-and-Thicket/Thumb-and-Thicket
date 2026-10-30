@@ -34,6 +34,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> LILY_PAD = registerKey("lily_pad_placed");
     public static final RegistryKey<PlacedFeature> DUCKWEED_SWAMP = registerKey("duckweed_swamp_placed");
     public static final RegistryKey<PlacedFeature> DUCKWEED = registerKey("duckweed_placed");
+    public static final RegistryKey<PlacedFeature> LEAF_LITTER = registerKey("leaf_litter_placed");
 
     public static final RegistryKey<PlacedFeature> RED_MUSHROOM_NORMAL = registerKey("red_mushroom_normal_placed");
     public static final RegistryKey<PlacedFeature> RED_MUSHROOM_NETHER = registerKey("red_mushroom_nether_placed");
@@ -92,6 +93,7 @@ public class ModPlacedFeatures {
         register(context, MILKWEED, configuredFeatures.getOrThrow(ModConfiguredFeatures.MILKWEED_KEY), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_TOP_RANGE, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(5));
         register(context, CATTAIL, configuredFeatures.getOrThrow(ModConfiguredFeatures.CATTAIL_KEY), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_TOP_RANGE, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(2));
         register(context, LILY_PAD, configuredFeatures.getOrThrow(ModConfiguredFeatures.LILY_PAD_KEY), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_TOP_RANGE, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(2), SnowPlacementModifier.of(false));
+        register(context, LEAF_LITTER, configuredFeatures.getOrThrow(ModConfiguredFeatures.LEAF_LITTER_KEY), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_TOP_RANGE, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(2), SnowPlacementModifier.of(false));
         register(context, DUCKWEED, configuredFeatures.getOrThrow(ModConfiguredFeatures.DUCKWEED), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_TOP_RANGE, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(2), SnowPlacementModifier.of(false));
         register(context, DUCKWEED_SWAMP, configuredFeatures.getOrThrow(ModConfiguredFeatures.DUCKWEED_SWAMP), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_TOP_RANGE, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(2), SnowPlacementModifier.of(false));
         register(context, CLOVERS, configuredFeatures.getOrThrow(ModConfiguredFeatures.CLOVERS_KEY), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, SnowPlacementModifier.of(false), BiomePlacementModifier.of());

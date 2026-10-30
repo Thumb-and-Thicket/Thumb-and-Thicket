@@ -43,8 +43,8 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "maven.modrinth:6xwxDTgf:ayvoY8lx"
-    modImplementation "maven.modrinth:i6fiqm5y:BbIdNbF1"
+    modImplementation "maven.modrinth:6xwxDTgf:o0iGAHOA"
+    modImplementation "maven.modrinth:i6fiqm5y:ANBgWmzC"
 //    modImplementation "maven.modrinth:XaDC71GB:LC0qLyud"
 }
 

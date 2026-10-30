@@ -50,6 +50,7 @@ public class WaterloggedPlantFeature extends Feature<WaterloggedPlantFeatureConf
             for (BlockPos currentPos : BlockPos.iterate(pos.add(ySpread, 0, ySpread), pos.add(-ySpread, -0, -ySpread))) if (BlockPredicate.matchingFluids(Fluids.WATER).test(world, currentPos)) waterNearby = true;
             if (!waterNearby) continue;
             if (!state.canPlaceAt(world, pos.mutableCopy())) continue;
+//            if (state.contains(ModBlockStateProperties.SEGMENT_AMOUNT)) state.with(ModBlockStateProperties.SEGMENT_AMOUNT, random.nextBetween(1,4)).with(FACING, );
             world.setBlockState(pos.mutableCopy(), state.with(WATERLOGGED, true),2);
             placed++;
         }

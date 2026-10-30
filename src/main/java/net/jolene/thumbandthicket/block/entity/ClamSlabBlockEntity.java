@@ -13,6 +13,7 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -79,5 +80,15 @@ public class ClamSlabBlockEntity extends BlockEntity implements ImplementedInven
     @Override
     public float getAnimationProgress(float tickDelta) {
         return this.clamLidAnimator.getProgress(tickDelta);
+    }
+
+    @Override
+    public void setWorld(World world) {
+        super.setWorld(world);
+
+        if (world != null && world.isClient) {
+            boolean open = getCachedState().get(Properties.OPEN);
+            clamLidAnimator.setOpenImmediately(open);
+        }
     }
 }

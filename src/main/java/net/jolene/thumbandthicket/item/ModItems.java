@@ -56,7 +56,7 @@ public class ModItems {
     public static final Item LUCKY_CLOVER = register(new Item(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(64).food(LUCKY_CLOVER_FOOD_COMPONENT)), "lucky_clover");
     public static final Item PEARL = register(new Item(new Item.Settings().rarity(Rarity.RARE).maxCount(16)), "pearl");
     public static final Item DUCKWEED = register(new PlaceableOnWaterItem(ModBlocks.DUCKWEED, new Item.Settings()), "duckweed");
-    public static final Item LEAF_LITTER = registerVanilla(new PlaceableOnWaterLitter(com.blackgear.vanillabackport.common.registries.ModBlocks.LEAF_LITTER.get(), new Item.Settings()), "minecraft:leaf_litter");
+    public static final Item LEAF_LITTER = registerVanilla(new PlaceableOnWaterLitter(com.blackgear.vanillabackport.common.registries.blocks.ModBlocks.LEAF_LITTER.get(), new Item.Settings()), "minecraft:leaf_litter");
 
     public static final Item DEER_SPAWN_EGG = register(
             new SpawnEggItem(ModEntities.DEER, 0x000000, 0x000000, new Item.Settings()),

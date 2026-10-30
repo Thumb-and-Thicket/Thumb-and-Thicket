@@ -1,6 +1,6 @@
 package net.jolene.thumbandthicket.mixin.entity.model.variant.cow;
 
-import com.blackgear.vanillabackport.client.level.entities.model.cow.ColdCowModel;
+import com.blackgear.vanillabackport.client.level.model.entity.cow.ColdCowModel;
 import net.jolene.thumbandthicket.util.ModelUtil;
 import net.minecraft.client.model.*;
 import org.spongepowered.asm.mixin.Mixin;

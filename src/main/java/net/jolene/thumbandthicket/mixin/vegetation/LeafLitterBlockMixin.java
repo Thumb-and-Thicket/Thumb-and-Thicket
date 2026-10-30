@@ -19,6 +19,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -65,7 +66,7 @@ public abstract class LeafLitterBlockMixin extends PlantBlock implements Waterlo
      * @reason waterlogging
      */
     @Overwrite
-    public BlockState getPlacementState(ItemPlacementContext context) {
+    public @Nullable BlockState getPlacementState(ItemPlacementContext context) {
         BlockState state = context.getWorld().getBlockState(context.getBlockPos());
         return state.isOf(this) ? state.with(AMOUNT, Math.min(4, state.get(AMOUNT) + 1)) : this.getDefaultState().with(FACING, context.getHorizontalPlayerFacing().getOpposite()).with(WATERLOGGED, context.getWorld().getFluidState(context.getBlockPos()).getFluid() == Fluids.WATER);
     }

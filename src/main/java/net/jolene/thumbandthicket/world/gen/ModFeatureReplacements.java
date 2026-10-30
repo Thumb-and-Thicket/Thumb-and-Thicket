@@ -127,6 +127,7 @@ public class ModFeatureReplacements {
 //        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_OVERWORLD), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.RED_MUSHROOM_TREE);
 //        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_OVERWORLD), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PURPLE_MUSHROOM_TREE);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CAVE_PARSNIPS);
+        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.IS_FOREST), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LEAF_LITTER);
 
     }
 

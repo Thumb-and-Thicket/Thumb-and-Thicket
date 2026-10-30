@@ -30,11 +30,10 @@ public class ModItemTooltips {
 
             if (itemStack.isOf(Items.SHEARS)) {
                 if (Screen.hasShiftDown()) {
-                    list.add(1, Text.literal(""));
-                    list.add(2, Text.translatable("tooltip.thumbandthicket.shears"));
-                    list.add(3, Text.translatable("tooltip.thumbandthicket.shears1"));
-                    list.add(4, Text.translatable("tooltip.thumbandthicket.shears2"));
-                    list.add(5, Text.translatable("tooltip.thumbandthicket.shears3"));
+                    list.add(1, Text.translatable("tooltip.thumbandthicket.shears"));
+                    list.add(2, Text.translatable("tooltip.thumbandthicket.shears1"));
+                    list.add(3, Text.translatable("tooltip.thumbandthicket.shears2"));
+                    list.add(4, Text.translatable("tooltip.thumbandthicket.shears3"));
                 } else {
                     list.add(1, Text.translatable("tooltip.thumbandthicket.shears"));
                     addShift(2, list);

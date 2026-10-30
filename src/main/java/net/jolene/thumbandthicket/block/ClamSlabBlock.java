@@ -135,17 +135,8 @@ public class ClamSlabBlock extends BlockWithEntity implements Waterloggable {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-    }
-
-    @Override
-    protected VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
-        return Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+        if (!state.get(OPEN)) return Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+        return Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
     }
 
     @Override
@@ -172,5 +163,10 @@ public class ClamSlabBlock extends BlockWithEntity implements Waterloggable {
     @Override
     protected boolean hasRandomTicks(BlockState state) {
         return !state.get(OPEN);
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 }

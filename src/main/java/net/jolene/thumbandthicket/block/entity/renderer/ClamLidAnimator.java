@@ -23,4 +23,10 @@ public class ClamLidAnimator {
 	public void setOpen(boolean open) {
 		this.open = open;
 	}
+
+	public void setOpenImmediately(boolean open) {
+		this.open = open;
+		this.progress = open ? 1.0F : 0.0F;
+		this.lastProgress = this.progress;
+	}
 }
