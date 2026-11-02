@@ -44,6 +44,11 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PUFFED_DANDELION, drops(ModBlocks.PUFFED_DANDELION));
         addDrop(ModBlocks.LAVENDER, drops(ModBlocks.LAVENDER));
         addDrop(ModBlocks.CATTAIL, dropsWithShears(ModBlocks.CATTAIL, ItemEntry.builder(ModItems.CATTAIL_FLUFF)));
+        addDrop(ModBlocks.SNOWY_BUSH, dropsWithShears(ModBlocks.SNOWY_BUSH));
+        addDrop(ModBlocks.SNOWY_SHORT_GRASS, dropsWithShears(ModBlocks.SNOWY_SHORT_GRASS));
+        addDrop(ModBlocks.SNOWY_TALL_GRASS, tallPlantDrops(ModBlocks.SNOWY_TALL_GRASS, ModBlocks.SNOWY_SHORT_GRASS));
+        addDrop(ModBlocks.SNOWY_SHORT_FERN, dropsWithShears(ModBlocks.SNOWY_SHORT_FERN));
+        addDrop(ModBlocks.SNOWY_LARGE_FERN, tallPlantDrops(ModBlocks.SNOWY_LARGE_FERN, ModBlocks.SNOWY_SHORT_FERN));
         addDrop(ModBlocks.DUCKWEED, dropsWithShears(ModBlocks.DUCKWEED));
         addDrop(ModBlocks.POISON_IVY, dropsWithShears(ModBlocks.POISON_IVY));
         addDrop(ModBlocks.ALGAE, dropsWithShears(ModBlocks.ALGAE));

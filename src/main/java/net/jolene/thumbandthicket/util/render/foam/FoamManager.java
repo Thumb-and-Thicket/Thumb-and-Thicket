@@ -1,4 +1,4 @@
-package net.jolene.thumbandthicket.util.foam;
+package net.jolene.thumbandthicket.util.render.foam;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientChunkEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;

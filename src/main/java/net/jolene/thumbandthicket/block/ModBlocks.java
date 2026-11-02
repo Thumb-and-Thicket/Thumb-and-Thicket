@@ -68,11 +68,11 @@ public class ModBlocks {
     public static final Block AZALEA_SIGN = register(new SignBlock(ModWoodType.AZALEA, AbstractBlock.Settings.copy(Blocks.OAK_SIGN)), "azalea_sign", true);
     public static final Block AZALEA_HANGING_SIGN = register(new HangingSignBlock(ModWoodType.AZALEA, AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN)), "azalea_hanging_sign", true);
 
-    public static final Block SNOWY_BUSH = register(new ShortSnowyPlantBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_bush", true);
-    public static final Block SNOWY_SHORT_GRASS = register(new ShortSnowyPlantBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_short_grass", true);
-    public static final Block SNOWY_TALL_GRASS = register(new TallSnowyPlantBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_tall_grass", true);
-    public static final Block SNOWY_SHORT_FERN = register(new ShortSnowyPlantBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_fern", true);
-    public static final Block SNOWY_LARGE_FERN = register(new TallSnowyPlantBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_large_fern", true);
+    public static final Block SNOWY_BUSH = register(new ShortSnowyPlant(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_bush", true);
+    public static final Block SNOWY_SHORT_GRASS = register(new ShortSnowyPlant(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_short_grass", true);
+    public static final Block SNOWY_TALL_GRASS = register(new TallSnowyPlant(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_tall_grass", true);
+    public static final Block SNOWY_SHORT_FERN = register(new ShortSnowyPlant(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_fern", true);
+    public static final Block SNOWY_LARGE_FERN = register(new TallSnowyPlant(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).replaceable().noCollision().nonOpaque().blockVision((state, world, pos) -> state.get(ModProperties.LAYERS) >= 8).hardness(0.1f).sounds(BlockSoundGroup.GRASS).pistonBehavior(PistonBehavior.DESTROY).dynamicBounds()), "snowy_large_fern", true);
     public static final Block TINGED_SHORT_GRASS = register(new ShortPlantBlock(AbstractBlock.Settings.copy(Blocks.SHORT_GRASS).dynamicBounds()), "tinged_short_grass", true);
     public static final Block BEACH_GRASS = register(new TallPlantBlock(AbstractBlock.Settings.copy(Blocks.LARGE_FERN)), "beach_grass", true);
 
@@ -148,7 +148,7 @@ public class ModBlocks {
             entries.addAfter(Items.POPPY, ROSE);
             entries.addAfter(ModBlocks.ROSE, BLUE_ROSE);
             entries.addAfter(Items.NETHER_SPROUTS, MYCELIAL_SPROUTS);
-            entries.addAfter(com.blackgear.vanillabackport.common.registries.ModBlocks.BUSH.get(), SNOWY_BUSH);
+            entries.addAfter(com.blackgear.vanillabackport.common.registries.blocks.ModBlocks.BUSH.get(), SNOWY_BUSH);
         });
     }
 

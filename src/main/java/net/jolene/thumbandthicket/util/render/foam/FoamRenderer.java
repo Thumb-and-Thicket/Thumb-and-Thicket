@@ -1,4 +1,4 @@
-package net.jolene.thumbandthicket.util.foam;
+package net.jolene.thumbandthicket.util.render.foam;
 
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;

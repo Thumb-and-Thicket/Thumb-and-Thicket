@@ -1,4 +1,4 @@
-package net.jolene.thumbandthicket.util.foam;
+package net.jolene.thumbandthicket.util.render.foam;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.world.ClientWorld;

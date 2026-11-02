@@ -1,7 +1,7 @@
 package net.jolene.thumbandthicket.mixin.entity.model;
 
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
-import net.jolene.thumbandthicket.util.CoatTwoUtil;
+import net.jolene.thumbandthicket.util.render.CoatTwoUtil;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.SheepEntityRenderer;

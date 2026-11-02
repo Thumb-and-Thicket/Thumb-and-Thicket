@@ -1,16 +1,17 @@
 package net.jolene.thumbandthicket.block;
 
 import net.jolene.thumbandthicket.util.ModProperties;
+import net.jolene.thumbandthicket.util.render.Snowable;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
@@ -24,8 +25,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class TallSnowyPlantBlock extends TallPlantBlock {
-    public TallSnowyPlantBlock(Settings settings) {
+public class TallSnowyPlant extends TallPlantBlock implements Snowable {
+    public TallSnowyPlant(Settings settings) {
         super(settings);
         super.setDefaultState(this.getDefaultState().with(ModProperties.LAYERS, 0));
     }
@@ -70,7 +71,7 @@ public class TallSnowyPlantBlock extends TallPlantBlock {
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         DoubleBlockHalf doubleBlockHalf = state.get(HALF);
         if (stack.isOf(Items.SNOW) && state.get(ModProperties.LAYERS) < 8 && doubleBlockHalf == DoubleBlockHalf.LOWER) {
-            world.setBlockState(pos, state.cycle(ModProperties.LAYERS), Block.NOTIFY_NEIGHBORS);
+            world.setBlockState(pos, state.cycle(ModProperties.LAYERS), Block.NOTIFY_LISTENERS);
             stack.decrementUnlessCreative(1, player);
             return ItemActionResult.SUCCESS;
         }
@@ -84,9 +85,8 @@ public class TallSnowyPlantBlock extends TallPlantBlock {
     }
 
     @Override
-    protected boolean canReplace(BlockState state, ItemPlacementContext context) {
-        if (context.getStack().isOf(Items.SNOW)) return false;
-        return super.canReplace(state, context);
+    public boolean canReplace(BlockState state, ItemPlacementContext context) {
+        return !context.shouldCancelInteraction() && context.getStack().isOf(Items.SNOW) && state.get(ModProperties.LAYERS) < 8 && state.get(HALF) != DoubleBlockHalf.UPPER || (super.canReplace(state, context) && state.get(ModProperties.LAYERS) == 0 && !context.getStack().isOf(Items.SNOW));
     }
 
     @Override
@@ -105,13 +105,16 @@ public class TallSnowyPlantBlock extends TallPlantBlock {
     @Override
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
         DoubleBlockHalf doubleBlockHalf = state.get(HALF);
-        if (tool.isOf(Items.SHEARS) && state.get(ModProperties.LAYERS) > 0) {
+        if (tool.isOf(Items.SHEARS) && state.get(ModProperties.LAYERS) > 0 && state.get(ModProperties.LAYERS) < 8) {
             if (doubleBlockHalf == DoubleBlockHalf.LOWER) {
                 world.setBlockState(pos, Blocks.SNOW.getDefaultState().with(Properties.LAYERS, state.get(ModProperties.LAYERS)), NOTIFY_ALL);
             } else {
                 world.setBlockState(pos.down(), Blocks.SNOW.getDefaultState().with(Properties.LAYERS, state.get(ModProperties.LAYERS)), NOTIFY_ALL);
             }
-            tool.damage(1, player, EquipmentSlot.MAINHAND);
+//            tool.damage(1, player, EquipmentSlot.MAINHAND);
+        }
+        else if (tool.isIn(ItemTags.SHOVELS) && state.get(ModProperties.LAYERS) > 0) {
+            world.setBlockState(pos, state.with(ModProperties.LAYERS, 0), NOTIFY_ALL);
         }
         super.afterBreak(world, player, pos, state, blockEntity, tool);
     }

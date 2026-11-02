@@ -1,7 +1,7 @@
 package net.jolene.thumbandthicket.mixin.vegetation;
 
 import com.blackgear.vanillabackport.common.level.blocks.CactusFlowerBlock;
-import com.blackgear.vanillabackport.common.registries.ModBlocks;
+import com.blackgear.vanillabackport.common.registries.blocks.ModBlocks;
 import net.jolene.thumbandthicket.item.ModItems;
 import net.jolene.thumbandthicket.mixin.BlockAccessor;
 import net.jolene.thumbandthicket.util.ModProperties;

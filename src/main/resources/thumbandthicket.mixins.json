@@ -14,7 +14,6 @@
     "SettingsAccessor",
     "ShearsItemMixin",
     "TransitionBlockMixin",
-    "WaterloggableMixin",
     "compat.CreativeTabIntegrationMixin",
     "compat.LeafLitterFeatureMixin",
     "compat.ModBlocksMixin",
@@ -48,8 +47,13 @@
     "immersiveinteractions.AbstractBlockMixin",
     "immersiveinteractions.AxeItemMixin",
     "immersiveinteractions.ItemMixin",
+    "snowy.BucketItemMixin",
+    "snowy.FenceMixin",
+    "snowy.PaneMixin",
+    "snowy.PlayerEntityMixin",
     "snowy.SnowBlockMixin",
     "snowy.SnowyBlockMixin",
+    "snowy.WaterloggableMixin",
     "tree.DarkOakTrunkPlacerMixin",
     "tree.FoliagePlacerMixin",
     "tree.GiantTrunkPlacerMixin",
@@ -80,7 +84,6 @@
     "requireAnnotations": true
   },
   "client": [
-    "ClientWorldMixin",
     "entity.model.ChickenEntityModelMixin",
     "entity.model.CowEntityModelMixin",
     "entity.model.MooshroomMushroomFeatureRendererMixin",
@@ -95,6 +98,8 @@
     "entity.model.variant.cow.CowVariantModelMixin",
     "entity.model.variant.cow.WarmCowModelMixin",
     "entity.model.variant.pig.ColdPigModelMixin",
+    "render.ClientWorldMixin",
+    "render.SectionBuilderMixin",
     "tree.FluidRendererMixin"
   ]
 }

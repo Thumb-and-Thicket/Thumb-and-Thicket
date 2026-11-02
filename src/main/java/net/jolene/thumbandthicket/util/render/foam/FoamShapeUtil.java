@@ -1,4 +1,4 @@
-package net.jolene.thumbandthicket.util.foam;
+package net.jolene.thumbandthicket.util.render.foam;
 
 import net.jolene.thumbandthicket.ThumbAndThicket;
 import net.minecraft.client.texture.Sprite;

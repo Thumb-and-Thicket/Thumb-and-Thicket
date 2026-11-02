@@ -1,6 +1,6 @@
-package net.jolene.thumbandthicket.mixin;
+package net.jolene.thumbandthicket.mixin.render;
 
-import net.jolene.thumbandthicket.util.foam.FoamManager;
+import net.jolene.thumbandthicket.util.render.foam.FoamManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.BlockPos;
