@@ -2,9 +2,6 @@ package net.jolene.thumbandthicket.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import net.jolene.thumbandthicket.block.ModBlocks;
-import net.jolene.thumbandthicket.util.ModProperties;
-import net.jolene.thumbandthicket.util.Rooty;
 import net.jolene.thumbandthicket.util.render.Snowable;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -16,7 +13,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,7 +22,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static net.jolene.thumbandthicket.util.ModProperties.*;
-import static net.minecraft.block.PillarBlock.AXIS;
 
 @Mixin(Block.class)
 public abstract class BlockMixin {

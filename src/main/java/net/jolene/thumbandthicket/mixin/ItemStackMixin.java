@@ -2,7 +2,6 @@ package net.jolene.thumbandthicket.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.jolene.thumbandthicket.datagen.ModItemTagProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FarmlandBlock;
@@ -14,7 +13,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
 
 import static net.jolene.thumbandthicket.util.ModProperties.FERTILIZED;
 
